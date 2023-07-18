@@ -1,76 +1,25 @@
 import React from 'react';
-import tabibaIcon from '../../img/Tabiba-logo.PNG'
 import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-      <div className='relative mb-16'>
-        <div className="navbar bg-orange-600 md:px-16 fixed top-0 left-0 right-0 z-50">
-          <div className="navbar-start ">
-            <div className="dropdown">
-              <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                <Link to='/' className='text-lg font-bold '>Home</Link>
-              </li>
-              <li>
-                <Link to='/about' className='text-lg font-bold '>About</Link>
-              </li>
-              <li>
-                <Link to='/service' className='text-lg font-bold '>Services</Link>
-              </li>
-              <li>
-                <Link to='/team' className='text-lg font-bold '>Our Team</Link>
-              </li>
-              <li>
-                <Link to='/contact' className='text-lg font-bold '>Contact</Link>
-              </li>
-              </ul>
-            </div>
-            <Link to='/' className="btn btn-ghost text-white ml-[-15px] normal-case text-xl md:text-2xl  font-bold"> <img className='w-8 md:w-12 md:mr-4 rounded' src={tabibaIcon} alt="" /> Tabiba Group</a>
-          </div>
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
-              <li>
-                <Link to='/' className='text-lg font-bold text-white'>Home</Link>
-              </li>
-              <li>
-                <Link to='/about' className='text-lg font-bold text-white'>About</Link>
-              </li>
-              <li>
-                <Link to='/service' className='text-lg font-bold text-white'>Services</Link>
-              </li>
-              <li>
-                <Link to='/team' className='text-lg font-bold text-white'>Our Team</Link>
-              </li>
-              <li>
-                <Link to='/contact' className='text-lg font-bold text-white'>Contact</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="navbar-end">
-            <Link to='/signIn' className="btn btn-sm hover:btn-secondary  btn-active hover:transition hover:duration-500 hover:ease-in-out hover:text-red-600 hover:font-bold  text-lg">Sign In</Link>
-          </div>
+        <div className='grid grid-cols-2 bg-[#ad1399] p-2'>
+            <Link className='m-auto' to='/'>
+            <button className='text-center text-xl'>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 m-auto">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+</svg>
+Home
+            </button>
+            </Link>
+            <Link  className='m-auto' to='/user'>
+            <button className='text-center text-xl'>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 m-auto">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+Me
+            </button></Link>
         </div>
-      </div>
     );
 };
 

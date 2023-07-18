@@ -1,16 +1,18 @@
 
 import './App.css';
-import Header from './Components/Shared/Header';
-import Footer from './Components/Shared/Footer';
 import { Route, Routes } from 'react-router-dom';
-import Home from './Components/Home/Home';
-import Banner2 from './Components/Home/Banner2';
-import CommingSoon from './Components/Home/CommingSoon';
-import Service from './Components/Home/Service';
-import About from './Components/Home/About';
-import Contact from './Components/Home/Contact';
-import OurTeam from './Components/Home/OurTeam';
-import SignIn from './Components/Home/SignIn';
+import Home from './Components/GameSection/Home/Home';
+import Wingo from './Components/GameSection/Wingo/Wingo';
+import SignIn from './Components/LoginSystem/SignIn';
+import Register from './Components/LoginSystem/Register';
+import Header from './Components/Shared/Header';
+import Countdown from './Components/Countdown';
+import Timer from './Components/Timer';
+import ParentComponent from './Components/ParentComponent';
+import UserProfile from './Components/UserProfile/UserProfile';
+import ForgetPass from './Components/LoginSystem/ForgetPass';
+import DashBoard from './Components/DashBoard/DashBoard';
+import DepositeForm from './Components/DepositeForm';
 
 function App() {
   return (
@@ -18,15 +20,15 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/aboutAmayra' element={<Banner2></Banner2>}></Route>
-        <Route path='/comingSoon' element={<CommingSoon></CommingSoon>}></Route>
-        <Route path='/service' element={<Service></Service>}></Route>
-        <Route path='/about' element={<About></About>}></Route>
-        <Route path='/contact' element={<Contact></Contact>}></Route>
-        <Route path='/team' element={<OurTeam></OurTeam>}></Route>
-        <Route path='/signIn' element={<SignIn></SignIn>}></Route>
+        <Route path='/login' element={<SignIn></SignIn>}></Route>
+        <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/forgetPass' element={<ForgetPass></ForgetPass>}></Route>
+        <Route path='/wingo' element={<Wingo></Wingo>}></Route>
+        <Route path='/user' element={<UserProfile></UserProfile>}></Route>
+        <Route path='/timer' element={<Countdown></Countdown>}></Route>
+        <Route path='/dashboard' element={<DashBoard></DashBoard>}></Route>
+        <Route path='/depositeForm' element={<DepositeForm></DepositeForm>}></Route>
       </Routes>
-      <Footer></Footer>
     </div>
   );
 }
