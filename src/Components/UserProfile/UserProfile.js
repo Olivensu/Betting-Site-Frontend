@@ -36,10 +36,10 @@ const UserProfile = () => {
 
             <div className='ml-12'>
               <p className='text-xl my-3'><b>Id:</b> {_id}</p>
-              <p className='text-xl my-3'><b>name:</b> {name}</p>
-              <p className='text-xl my-3'><b>email:</b> {email}</p>
-              <p className='text-xl my-3'><b>phone:</b> {phone}</p>
-              <p className='text-xl my-3'><b>deposite:</b> {deposite}</p>
+              <p className='text-xl my-3'><b>Name:</b> {name}</p>
+              <p className='text-xl my-3'><b>Email:</b> {email}</p>
+              <p className='text-xl my-3'><b>Phone:</b> {phone}</p>
+              <p className='text-xl my-3'><b>Current Balance:</b> {deposite}</p>
             </div>
             </div>
             {

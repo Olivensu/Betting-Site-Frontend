@@ -1,20 +1,29 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import auth from '../firebase.init';
+import Loading from './Shared/Loading';
 
 const DepositeForm = () => {
     const history = useNavigate();
+    const [user, loading, error] = useAuthState(auth);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
+    const [txnID, setTxnID] = useState('');
     const [deposite, setDeposite] = useState('');
+
+    if(loading){
+      return <Loading></Loading>
+    }
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
 
         try {
             await axios.post("http://localhost:5000/depositHistory",{
-              name,email,phone,deposite
+              name,email,phone,deposite,txnID
             })
             .then(res=>{
                 console.log(res);
@@ -55,17 +64,26 @@ const DepositeForm = () => {
                 <input
                   type="email"
                   name='email'
-                  placeholder="Type your email"
-                  onChange={(e)=>{setEmail(e.target.value)}}
+                  value={user?.email}
+                  onChange={(e)=>{setEmail(user?.email)}}
                   className="m-5 block mx-auto input w-full max-w-xs"
                 />
 
-<input
+                <input
                   type="number"
                   name='phone'
                   placeholder="Type your number"
                   onChange={(e)=>{setPhone(e.target.value)}}
                   className="m-5 block mx-auto input w-full max-w-xs"
+                />
+
+                <input
+                  type="text"
+                  name='txnid'
+                  placeholder="Type your TxnID"
+                  onChange={(e)=>{setTxnID(e.target.value)}}
+                  className="m-5 block mx-auto input w-full max-w-xs"
+                  
                 />
                 
                 
