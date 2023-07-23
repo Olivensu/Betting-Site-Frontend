@@ -15,7 +15,7 @@ const UserProfile = () => {
         fetch(`http://localhost:5000/users/${user?.email}`)
         .then(res=>res.json())
         .then(data=> setUserinfo(data))
-      }, [])
+      }, [user,userinfo])
 
       if(loading){
         return <Loading></Loading>

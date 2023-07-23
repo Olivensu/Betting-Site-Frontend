@@ -45,7 +45,7 @@ const Register = () => {
           setErrorPass('Password must be at least 7 characters long.');
           return;
         }
-        createUserWithEmailAndPassword(email, password);
+        
 
         try {
             await axios.post("http://localhost:5000/register",{
@@ -61,6 +61,7 @@ const Register = () => {
               }
                 else{
                   console.log(user)
+                    createUserWithEmailAndPassword(email, password);
                     console.log("registered successfully")
                 }
             })
@@ -92,22 +93,22 @@ const Register = () => {
                   type="text"
                   name='name'
                   placeholder="Type your name"
-                  onChange={(e)=>{setName(e.target.value)}}
+                  onChange={(e)=>{setName(e.target.value)}} required
                   className="m-5 block mx-auto input w-full max-w-xs"
                 />
                 <input
                   type="email"
                   name='email'
                   placeholder="Type your email"
-                  onChange={(e)=>{setEmail(e.target.value)}}
+                  onChange={(e)=>{setEmail(e.target.value)}} required
                   className="m-5 block mx-auto input w-full max-w-xs"
                 />
 
-<input
+                <input
                   type="number"
                   name='phone'
                   placeholder="Type your number"
-                  onChange={(e)=>{setPhone(e.target.value)}}
+                  onChange={(e)=>{setPhone(e.target.value)}} required
                   className="m-5 block mx-auto input w-full max-w-xs"
                 />
                 
@@ -115,14 +116,14 @@ const Register = () => {
                   type="password"
                   name='password'
                   placeholder="Type your password"
-                  onChange={handlePasswordChange}
+                  onChange={handlePasswordChange} required
                   className="m-5 block mx-auto input w-full max-w-xs"
                 />
                 
                 <input
                   type="password"
                   name='confirmpassword'
-                  placeholder="Type your confirmpassword"
+                  placeholder="Type your confirmpassword" required
                   onChange={(e)=>{setConfirmpassword(e.target.value)}}
                   className="m-5 block mx-auto input w-full max-w-xs"
                 />

@@ -15,6 +15,7 @@ import DashBoard from './Components/DashBoard/DashBoard';
 import DepositeForm from './Components/DepositeForm';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import AdminRoute from './Components/PrivateRoute/AdminRoute';
+import SureWin from './Components/GameSection/SureWin/SureWin';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/timer' element={<Countdown></Countdown>}></Route>
         <Route path='/dashboard' element={<AdminRoute><DashBoard></DashBoard></AdminRoute>}></Route>
         <Route path='/depositeForm' element={<PrivateRoute><DepositeForm></DepositeForm></PrivateRoute>}></Route>
+        <Route path='/surewin' element={<PrivateRoute><SureWin></SureWin></PrivateRoute>}></Route>
       </Routes>
     </div>
   );

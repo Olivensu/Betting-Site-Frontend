@@ -23,7 +23,7 @@ const DepositeForm = () => {
 
         try {
             await axios.post("http://localhost:5000/depositHistory",{
-              name,email,phone,deposite,txnID
+              name,email:user.email,phone,deposite,txnID
             })
             .then(res=>{
                 console.log(res);
@@ -65,7 +65,6 @@ const DepositeForm = () => {
                   type="email"
                   name='email'
                   value={user?.email}
-                  onChange={(e)=>{setEmail(user?.email)}}
                   className="m-5 block mx-auto input w-full max-w-xs"
                 />
 

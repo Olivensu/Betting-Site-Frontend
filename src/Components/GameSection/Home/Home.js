@@ -16,7 +16,7 @@ const Home = () => {
            </div>
            <div className=' bg-[#6C005E] text-center p-10'>
             <img className='w-10/12 m-auto rounded-2xl' src={sureWin} alt="" />
-            <Link><button className='btn btn-primary mt-8 w-10/12'>Go Win!!!</button></Link>
+            <Link to='/surewin'><button className='btn btn-primary mt-8 w-10/12'>Go Win!!!</button></Link>
            </div>
            </div>
         </div>
