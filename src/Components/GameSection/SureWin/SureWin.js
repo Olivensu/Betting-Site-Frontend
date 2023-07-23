@@ -42,7 +42,7 @@ const SureWin = () => {
           });
           // This function will execute every 1 second (1000 milliseconds)
           // You can put any logic here that you want to execute every 1 second
-          setCount((prevCount) => prevCount + 1);
+          // setCount((prevCount) => prevCount + 1);
         }, (1000 * 60 * 60 * 24));
     
         // Clean up the interval when the component unmounts

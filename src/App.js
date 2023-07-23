@@ -16,6 +16,8 @@ import DepositeForm from './Components/DepositeForm';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import AdminRoute from './Components/PrivateRoute/AdminRoute';
 import SureWin from './Components/GameSection/SureWin/SureWin';
+import RechargeRequest from './Components/DashBoard/RechargeRequest';
+import WithDrawRequest from './Components/DashBoard/WithDrawRequest';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
         <Route path='/user' element={<UserProfile></UserProfile>}></Route>
         <Route path='/timer' element={<Countdown></Countdown>}></Route>
         <Route path='/dashboard' element={<AdminRoute><DashBoard></DashBoard></AdminRoute>}></Route>
+        <Route path='/dashboard/rechargerequest' element={<AdminRoute><RechargeRequest></RechargeRequest></AdminRoute>}></Route>
+        <Route path='/dashboard/withdrawrequest' element={<AdminRoute><WithDrawRequest></WithDrawRequest></AdminRoute>}></Route>
         <Route path='/depositeForm' element={<PrivateRoute><DepositeForm></DepositeForm></PrivateRoute>}></Route>
         <Route path='/surewin' element={<PrivateRoute><SureWin></SureWin></PrivateRoute>}></Route>
       </Routes>
