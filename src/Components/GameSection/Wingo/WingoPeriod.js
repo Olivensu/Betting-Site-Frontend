@@ -78,6 +78,7 @@ const WingoPeriod = () => {
   };
 
   const handleSubmit = async(color) => {
+    
     if (selectedValue !== null) {
       try {
         await axios.post(`http://localhost:5000/bet`,{
@@ -89,7 +90,7 @@ const WingoPeriod = () => {
         console.log(error);
       }
     } else {
-      console.log("Please select a value.");
+      alert("Please select a value.");
     }
   };
     return (

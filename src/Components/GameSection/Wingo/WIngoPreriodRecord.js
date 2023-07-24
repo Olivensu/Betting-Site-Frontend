@@ -55,7 +55,7 @@ const WIngoPreriodRecord = () => {
             <tr className="hover" key={number._id}>
               <td>{number.countdownId}</td>
               <td>{number.status}</td>
-              <td>{number.winningColor}</td>
+              <td>{number?.winningColor==='red'? <div className='w-6 h-6 rounded-full bg-red-600'></div>:number?.winningColor==='green'? <div className='w-6 h-6 rounded-full bg-green-600'></div>:<div className='w-6 h-6 rounded-full bg-blue-600'></div>}</td>
             </tr>
           ))}
         </tbody>
