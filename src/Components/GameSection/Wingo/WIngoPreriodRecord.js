@@ -1,25 +1,27 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const WIngoPreriodRecord = () => {
-    const [numbers, setNumbers] = useState([]);
+    const [data, setData] = useState([]);
     const [gameCount, setGameCount] = useState(1);
     console.log(gameCount)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setGameCount(prevCount=>(prevCount % 480) + 1)
-      const randomNumber = Math.floor(Math.random() * 10) + 1;
-      setNumbers(prevNumbers => [
-        {
-          id: gameCount,
-          value: randomNumber,
-        },
-        ...prevNumbers,
-      ]);
-    }, 180000);
+      axios.get('http://localhost:5000/countdown/').then(res=>{
+        setData(res.data);
+      })
+    }, 2000);
+
+
 
     return () => clearInterval(interval);
   }, []);
+
+  const finishedData = data.filter(data => data.status === 'finished');
+
+  const sortedData = finishedData.sort((a, b) =>parseInt(b.countdownId) - parseInt(a.countdownId)).slice(0,10);
+  console.log(sortedData)
     return (
         <div className='bg-base-200 rounded-xl py-3'>
             <div className="flex justify-center">
@@ -39,47 +41,29 @@ const WIngoPreriodRecord = () => {
             </div>
             <div className='h-1 mt-3 w-full bg-yellow-700'></div>
             <div>
-      <h1>Random Number Table</h1>
-      <table className=''>
+      <div className='overflow-x-auto bg-sky-100'>
+      <table className='table'>
         <thead>
           <tr className=''>
             <th>ID</th>
+            <th>status</th>
             <th>Color</th>
           </tr>
         </thead>
         <tbody>
-          {numbers.map(number => (
-            <tr key={number.id}>
-              <td>{number.id}</td>
-              <td>{number.value}</td>
+          {sortedData?.map(number => (
+            <tr className="hover" key={number._id}>
+              <td>{number.countdownId}</td>
+              <td>{number.status}</td>
+              <td>{number.winningColor}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
       
     </div>
-    <div className="overflow-x-auto">
-  <table className="table table-zebra">
-    {/* head */}
-    <thead>
-      <tr>
-        <th></th>
-        <th>ID</th>
-        <th>Price</th>
-        <th>Color</th>
-      </tr>
-    </thead>
-    <tbody>
-      {/* row 1 */}
-      <tr>
-        <th></th>
-        <th>1</th>
-        <td>Cy Ganderton</td>
-        <td><div className='w-5 h-5 bg-green-600 rounded-full'></div></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    
         </div>
     );
 };

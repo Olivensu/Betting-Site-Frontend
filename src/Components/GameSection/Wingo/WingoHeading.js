@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading';
 
 const WingoHeading = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const [deposites, setDeposites] = useState(0);
+
+  useEffect(() => {
+
+    const interval = setInterval(()=>{
+      fetch(`http://localhost:5000/users/${user?.email}`)
+    .then(res=>res.json())
+    .then(data=> setDeposites(data.deposite))
+    }, (2000));
+
+    return () => {
+      clearInterval(interval);
+    }
+
+  }, [deposites])
+
+
+  if(loading){
+    return <Loading></Loading>
+  }
     return (
       <div className=" bg-base-200 py-6 shadow-xl rounded-xl">
         <p className="text-2xl font-bold text-center py-2">
-          Available Balance: 0
+          Available Balance: {deposites}
         </p>
         <div className="flex justify-around">
         <Link to='/depositeForm'><button  className='btn btn-warning hover:bg-yellow-600 text-white'>Recharge</button></Link>

@@ -1,47 +1,72 @@
 import React, { useEffect, useState } from 'react';
 import './wingoPeriod.css'
+import axios from 'axios';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 const WingoPeriod = () => {
+  const [user, loading, error] = useAuthState(auth);
   const [time, setTime] = useState(0);
-  const [gameCount, setGameCount] = useState(1);
+  const [gameCount, setGameCount] = useState('');
   const [selectedValue, setSelectedValue] = useState(null);
 
-  const date = new Date().getDate()  
-  const month = new Date().getMonth()
-  const year = new Date().getFullYear() 
+  // const date = new Date().getDate()  
+  // const month = new Date().getMonth()
+  // const year = new Date().getFullYear() 
   
-  const id = `${year}${month+1}${date}`
+  // const id = `${year}${month+1}${date}`
+  // useEffect(() => {
+  //   const storedTime = localStorage.getItem('countdownTime');
+
+  //   if (storedTime) {
+  //     const remainingTime = parseInt(storedTime);
+  //     if (remainingTime > 0) {
+  //       setTime(remainingTime);
+  //     } else {
+  //       setTime(0);
+  //       localStorage.removeItem('countdownTime'); // Reset the stored time if it has expired
+  //     }
+  //   }
+
+  //   const interval = setInterval(() => {
+  //     setTime(prevTime => {
+  //       const updatedTime = (prevTime + 1)%180;
+  //       localStorage.setItem('countdownTime', updatedTime);
+  //       return updatedTime;
+  //     });
+  //   }, 1000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
+
+  // useEffect(() => {
+  //   const intervals = setInterval(() => {
+  //     setGameCount(prevCount => (prevCount % 480) + 1);
+  //   }, 180000);
+
+  //   return () => clearInterval(intervals);
+  // },[])
+
   useEffect(() => {
-    const storedTime = localStorage.getItem('countdownTime');
-
-    if (storedTime) {
-      const remainingTime = parseInt(storedTime);
-      if (remainingTime > 0) {
-        setTime(remainingTime);
-      } else {
-        setTime(0);
-        localStorage.removeItem('countdownTime'); // Reset the stored time if it has expired
-      }
-    }
-
     const interval = setInterval(() => {
-      setTime(prevTime => {
-        const updatedTime = (prevTime + 1)%180;
-        localStorage.setItem('countdownTime', updatedTime);
-        return updatedTime;
+
+      axios.get(`http://localhost:5000/countdown/running`)
+      .then(res=>{
+        setTime(res.data.secondsLeft);
+        setGameCount(res.data.countdownId)
+        console.log(res.data.secondsLeft);
+        console.log(res.data);
       });
-    }, 1000);
+      // This function will execute every 1 second (1000 milliseconds)
+      // You can put any logic here that you want to execute every 1 second
+      // setCount((prevCount) => prevCount + 1);
+    }, (1000));
 
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const intervals = setInterval(() => {
-      setGameCount(prevCount => (prevCount % 480) + 1);
-    }, 180000);
-
-    return () => clearInterval(intervals);
-  },[])
+    // Clean up the interval when the component unmounts
+    return () => {
+      clearInterval(interval);
+    };
+    },[]);
 
   const formatTime = time => {
     const minutes = Math.floor(time / 60).toString().padStart(2, '0');
@@ -52,10 +77,17 @@ const WingoPeriod = () => {
     setSelectedValue(value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async(color) => {
     if (selectedValue !== null) {
-      console.log("Selected value:", selectedValue);
-      // Perform any desired action here, such as submitting the value to a server
+      try {
+        await axios.post(`http://localhost:5000/bet`,{
+        email: user?.email, color, betAmount: selectedValue
+      }).then(res=>{
+        alert(`Successfully ${selectedValue} submitted.`)
+      })
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       console.log("Please select a value.");
     }
@@ -91,8 +123,11 @@ const WingoPeriod = () => {
         </div>
         <div className="flex justify-around py-3">
           {/* You can open the modal using ID.showModal() method */}
-          <button className="btn btn-success text-white"
+          {
+            time>30 ? <button className="btn btn-success text-white"
+            onClick={() => window.my_modal_4.showModal()}>Join Green</button> : <button className="btn text-white " disabled
             onClick={() => window.my_modal_4.showModal()}>Join Green</button>
+          }
           <dialog id="my_modal_4" className="modal">
             <form method="dialog" className="modal-box w-11/12 max-w-5xl">
               <h3 className="font-bold text-center bg-green-600 text-white py-3 rounded-xl  text-lg">Join Green</h3>
@@ -109,7 +144,7 @@ const WingoPeriod = () => {
     <div>
               <div className="modal-action">
                 {/* if there is a button, it will close the modal */}
-                <button  className='btn w-1/2 btn-success text-white' onClick={handleSubmit} >Confirm</button>
+                <button  className='btn w-1/2 btn-success text-white' onClick={()=>handleSubmit('green')} >Confirm</button>
                 <button className="btn w-1/2 btn-accent">Close</button>
               </div>
     </div>
@@ -117,8 +152,11 @@ const WingoPeriod = () => {
           </dialog>
 
           {/* You can open the modal using ID.showModal() method */}
-          <button className="btn btn-accent text-white"
+          {
+            time>30 ?<button className="btn btn-accent text-white"
+            onClick={() => window.my_modal_5.showModal()}>Join Red</button> : <button className="btn btn-accent text-white" disabled
             onClick={() => window.my_modal_5.showModal()}>Join Red</button>
+          }
           <dialog id="my_modal_5" className="modal">
             <form method="dialog" className="modal-box w-11/12 max-w-5xl">
               <h3 className="font-bold text-center bg-red-600 text-white py-3 rounded-xl  text-lg">Join Red</h3>
@@ -135,7 +173,7 @@ const WingoPeriod = () => {
     <div>
               <div className="modal-action">
                 {/* if there is a button, it will close the modal */}
-                <button  className='btn w-1/2 btn-success text-white' onClick={handleSubmit} >Confirm</button>
+                <button  className='btn w-1/2 btn-success text-white' onClick={()=>handleSubmit('red')} >Confirm</button>
                 <button className="btn w-1/2 btn-accent">Close</button>
               </div>
     </div>
@@ -143,11 +181,14 @@ const WingoPeriod = () => {
           </dialog>
 
           {/* You can open the modal using ID.showModal() method */}
-          <button className="btn btn-secondary text-white"
-            onClick={() => window.my_modal_6.showModal()}>Join Violet</button>
+          {
+            time>30 ? <button className="btn btn-primary text-white"
+            onClick={() => window.my_modal_6.showModal()}>Join Blue</button> : <button className="btn btn-primary text-white" disabled
+            onClick={() => window.my_modal_6.showModal()}>Join Blue</button>
+          }
           <dialog id="my_modal_6" className="modal">
             <form method="dialog" className="modal-box w-11/12 max-w-5xl">
-              <h3 className="font-bold text-center bg-violet-600 text-white py-3 rounded-xl  text-lg">Join Violet</h3>
+              <h3 className="font-bold text-center bg-blue-600 text-white py-3 rounded-xl  text-lg">Join Blue</h3>
               <p className="py-4">Contract Money</p>
               <div>
       <input type="button" value="100" onClick={() => handleButtonClick(100)} className='btn btn-primary text-white mr-5' style={{ backgroundColor: selectedValue === 100 ? '#6739B6' : '' }} />
@@ -161,7 +202,7 @@ const WingoPeriod = () => {
     <div>
               <div className="modal-action">
                 {/* if there is a button, it will close the modal */}
-                <button  className='btn w-1/2 btn-success text-white' onClick={handleSubmit} >Confirm</button>
+                <button  className='btn w-1/2 btn-success text-white' onClick={()=>handleSubmit('blue')} >Confirm</button>
                 <button className="btn w-1/2 btn-accent">Close</button>
               </div>
     </div>

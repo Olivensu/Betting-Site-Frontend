@@ -116,7 +116,7 @@ const RechargeRequest = () => {
             <div className='m-auto text-center my-5 bg-lime-200 py-3 rounded-2xl shadow-xl'>
             <input className='input'
         type="text"
-        placeholder="Search by name"
+        placeholder="Search by TxnID"
         value={searchQuery}
         onChange={handleSearch}
       />
