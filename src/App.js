@@ -18,6 +18,7 @@ import AdminRoute from './Components/PrivateRoute/AdminRoute';
 import SureWin from './Components/GameSection/SureWin/SureWin';
 import RechargeRequest from './Components/DashBoard/RechargeRequest';
 import WithDrawRequest from './Components/DashBoard/WithDrawRequest';
+import NotFound from './Components/NotFound';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='/dashboard/withdrawrequest' element={<AdminRoute><WithDrawRequest></WithDrawRequest></AdminRoute>}></Route>
         <Route path='/depositeForm' element={<PrivateRoute><DepositeForm></DepositeForm></PrivateRoute>}></Route>
         <Route path='/surewin' element={<PrivateRoute><SureWin></SureWin></PrivateRoute>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
   );
