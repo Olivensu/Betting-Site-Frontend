@@ -32,47 +32,47 @@ if(loading ){
 }
 
     const handleSubmit = async (e) =>{
-        e.preventDefault();
-        signInWithEmailAndPassword(email, password)
-        try {
-          await axios.post("http://localhost:5000/login",{
-                email,password
-            })
-            .then(res=>{
-                if(res.data === "exist"){
-                    console.log("Login successful")
-                }
-                else{
-                    alert("User email or password is wrong")
-                    console.log("Login invalid")
-                }
-            })
-          // const res= await fetch("http://localhost:5000/login", {
-          //   method: "POST",
-          //   headers: {
-          //     "Content-Type": "application/json", // Specify that you're sending JSON data
-          //   },
-          //   body: JSON.stringify({email,password}), // Convert the data object to a JSON string
-          // });
+        // e.preventDefault();
+        // signInWithEmailAndPassword(email, password)
+        // try {
+        //   await axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`,{
+        //         email,password
+        //     })
+        //     .then(res=>{
+        //         if(res.data === "exist"){
+        //             console.log("Login successful")
+        //         }
+        //         else{
+        //             alert("User email or password is wrong")
+        //             console.log("Login invalid")
+        //         }
+        //     })
+        //   // const res= await fetch("${process.env.REACT_APP_API_BASE_URL}/login", {
+        //   //   method: "POST",
+        //   //   headers: {
+        //   //     "Content-Type": "application/json", // Specify that you're sending JSON data
+        //   //   },
+        //   //   body: JSON.stringify({email,password}), // Convert the data object to a JSON string
+        //   // });
 
-          // const data = res.json()
-          // console.log(data);
+        //   // const data = res.json()
+        //   // console.log(data);
 
-          // if(data){
-          //           history("/")
-          //           console.log("Login successful")
-          //       }
+        //   // if(data){
+        //   //           history("/")
+        //   //           console.log("Login successful")
+        //   //       }
                 
-          //       else{
-          //           alert("User email or password is wrong")
-          //           console.log("Login invalid")
-          //       }
+        //   //       else{
+        //   //           alert("User email or password is wrong")
+        //   //           console.log("Login invalid")
+        //   //       }
             
-        }
-        catch(e){
-            alert("Wrong Details")
-            console.log(e)
-        }
+        // }
+        // catch(e){
+        //     alert("Wrong Details")
+        //     console.log(e)
+        // }
         
     }
     return (

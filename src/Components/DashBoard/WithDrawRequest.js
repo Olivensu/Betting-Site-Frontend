@@ -9,7 +9,7 @@ const WithDrawRequest = () => {
     // const [amount, setAmount]= useState(0);
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/withdrawHistory')
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/withdrawHistory`)
         .then(response =>{
             setData(response.data)
             setTableData(response.data)
@@ -48,7 +48,7 @@ const WithDrawRequest = () => {
       let request = "Accepted";
       
           // Make a PUT request to update the status to 'accepted'
-           axios.put(`http://localhost:5000/withdrawHistory/${id}`, {request})
+           axios.put(`${process.env.REACT_APP_API_BASE_URL}/withdrawHistory/${id}`, {request})
           .then(res=>{
             // console.log(res);
             setStatus(request);

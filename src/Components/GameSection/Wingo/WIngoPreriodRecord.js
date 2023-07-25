@@ -8,7 +8,7 @@ const WIngoPreriodRecord = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      axios.get('http://localhost:5000/countdown/').then(res=>{
+      axios.get(`${process.env.REACT_APP_API_BASE_URL}/countdown/`).then(res=>{
         setData(res.data);
       })
     }, 2000);

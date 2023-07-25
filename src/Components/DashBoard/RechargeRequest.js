@@ -9,7 +9,7 @@ const RechargeRequest = () => {
     // const [amount, setAmount]= useState(0);
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/depositHistory')
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/depositHistory`)
         .then(response =>{
             setData(response.data)
             setTableData(response.data)
@@ -45,7 +45,7 @@ const RechargeRequest = () => {
     };
 
     const handleAccept =  (id) => {
-        axios.get(`http://localhost:5000/depositHistory/${id}`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/depositHistory/${id}`)
         .then(res=>{
           console.log(res.data.deposite);
           updateAmount(res.data.email, res.data.deposite)
@@ -56,7 +56,7 @@ const RechargeRequest = () => {
       let request = "Accepted";
       
           // Make a PUT request to update the status to 'accepted'
-           axios.put(`http://localhost:5000/depositHistory/${id}`, {request})
+           axios.put(`${process.env.REACT_APP_API_BASE_URL}/depositHistory/${id}`, {request})
           .then(res=>{
             // console.log(res);
             setStatus(request);
@@ -70,7 +70,7 @@ const RechargeRequest = () => {
       const handleReject = async (id) => {
         let request = "Rejected";
         // Make a PUT request to update the status to 'Rejected'
-        axios.put(`http://localhost:5000/depositHistory/${id}`, {request})
+        axios.put(`${process.env.REACT_APP_API_BASE_URL}/depositHistory/${id}`, {request})
         .then(res=>{
           // console.log(res);
           setStatus(request)
@@ -85,7 +85,7 @@ const RechargeRequest = () => {
     }
 
     const updateAmount = (email, amount) =>{
-      axios.get(`http://localhost:5000/users/${email}`)
+      axios.get(`${process.env.REACT_APP_API_BASE_URL}/users/${email}`)
       .then(res=>{
         console.log(res.data.deposite);
         const updateAmount = res.data.deposite + amount;
@@ -95,7 +95,7 @@ const RechargeRequest = () => {
 
     const currentBalance = (email,deposite) =>{
       // Make a PUT request to update the status to 'accepted'
-      axios.put(`http://localhost:5000/users/${email}`, {deposite})
+      axios.put(`${process.env.REACT_APP_API_BASE_URL}/users/${email}`, {deposite})
       .then(res=>{
         // console.log(res);
         console.log('Amount updated successfully',deposite);

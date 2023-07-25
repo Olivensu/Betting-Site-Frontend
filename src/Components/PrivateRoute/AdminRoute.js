@@ -10,7 +10,7 @@ const AdminRoute = ({children}) => {
     const [userinfo, setUserinfo] = useState('true');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user?.email}`)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/users/${user?.email}`)
         .then(res=>res.json())
         .then(data=> setUserinfo(data.isAdmin))
       }, [])

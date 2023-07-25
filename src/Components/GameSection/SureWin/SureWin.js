@@ -18,11 +18,11 @@ const SureWin = () => {
     const [surewinwinmoney, setSurewinwinmoney] = useState(0);
     const [count, setCount] = useState(0);
       useEffect(() => {
-        fetch(`http://localhost:5000/users/${user?.email}`)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/users/${user?.email}`)
         .then(res=>res.json())
         .then(data=> setUserinfo(data))
 
-        axios.get(`http://localhost:5000/surewin/${user?.email}`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/surewin/${user?.email}`)
       .then(res=>{
         setSureWinData(res.data)
         setSurewindeposite(res.data.deposite);
@@ -34,7 +34,7 @@ const SureWin = () => {
       useEffect(() => {
         const interval = setInterval(() => {
 
-          axios.get(`http://localhost:5000/surewin/${user?.email}`)
+          axios.get(`${process.env.REACT_APP_API_BASE_URL}/surewin/${user?.email}`)
           .then(res=>{
             setSurewinwinmoney(res.data.winmoney);
             console.log(res.data.winmoney);
@@ -70,7 +70,7 @@ const SureWin = () => {
 
         try {
             if(!sureWinData){
-                await axios.post("http://localhost:5000/surewin",{
+                await axios.post(`${process.env.REACT_APP_API_BASE_URL}/surewin`,{
                 name,email,phone,deposite:deposites
             })
             .then(res=>{
@@ -78,7 +78,7 @@ const SureWin = () => {
                 console.log("Deposit successfully")
             })
             }else if(sureWinData.email === email){
-                await axios.put(`http://localhost:5000/surewin/${email}`, {winmoney:updatewinmoney })
+                await axios.put(`${process.env.REACT_APP_API_BASE_URL}/surewin/${email}`, {winmoney:updatewinmoney })
                 .then(res=>{
                     alert("New Deposit added successfully")
                     console.log("New Deposit added successfully")
@@ -86,7 +86,7 @@ const SureWin = () => {
 
             }
 
-            await axios.put(`http://localhost:5000/users/${email}`, {deposite:currentBalance})
+            await axios.put(`${process.env.REACT_APP_API_BASE_URL}/users/${email}`, {deposite:currentBalance})
       .then(res=>{
         // console.log(res);
         console.log('Amount updated successfully',currentBalance);
@@ -117,7 +117,7 @@ const SureWin = () => {
           if(!sureWinData){
               alert('There is no deposit in this acount.')
           }else if(sureWinData.email === email){
-              await axios.put(`http://localhost:5000/surewin/${email}`, { winmoney:updatewinmoney })
+              await axios.put(`${process.env.REACT_APP_API_BASE_URL}/surewin/${email}`, { winmoney:updatewinmoney })
               .then(res=>{
                   alert("New Deposit added successfully")
                   console.log("New Deposit added successfully")
@@ -125,7 +125,7 @@ const SureWin = () => {
 
           }
 
-          await axios.put(`http://localhost:5000/users/${email}`, {deposite:currentBalance})
+          await axios.put(`${process.env.REACT_APP_API_BASE_URL}/users/${email}`, {deposite:currentBalance})
     .then(res=>{
       // console.log(res);
       console.log('Amount updated successfully',currentBalance);

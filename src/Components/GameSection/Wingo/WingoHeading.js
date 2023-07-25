@@ -11,7 +11,7 @@ const WingoHeading = () => {
   useEffect(() => {
 
     const interval = setInterval(()=>{
-      fetch(`http://localhost:5000/users/${user?.email}`)
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/users/${user?.email}`)
     .then(res=>res.json())
     .then(data=> setDeposites(data.deposite))
     }, (2000));

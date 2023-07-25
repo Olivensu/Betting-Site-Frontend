@@ -14,8 +14,31 @@ const UserProfile = () => {
     const logout = () => {
         signOut(auth);
       };
+
+      const [depositeData, setDepositeData] = useState([]);
+      const [withdrawData, setWithdrawData] = useState([]);
+    // const [status, setStatus] = useState('Submitted');
+    // const [amount, setAmount]= useState(0);
+
+    useEffect(()=>{
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/depositHistory`)
+        .then(response =>{
+          setDepositeData(response.data);
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/withdrawHistory`)
+        .then(response =>{
+          setWithdrawData(response.data)
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+    },[])
       useEffect(() => {
-        fetch(`http://localhost:5000/users/${user?.email}`)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/users/${user?.email}`)
         .then(res=>res.json())
         .then(data=> setUserinfo(data))
       }, [user,userinfo])
@@ -23,6 +46,9 @@ const UserProfile = () => {
       if(loading){
         return <Loading></Loading>
       }
+
+      const filterWithdrawData = withdrawData.filter(data => user?.email===data.email)
+      const filterDepositData = depositeData.filter(data => user?.email===data.email)
 
       const {_id,name, email,phone,deposite,isAdmin} = userinfo;
 
@@ -40,7 +66,7 @@ const UserProfile = () => {
         // const updatewinmoney = parseInt(surewinwinmoney) + parseInt(deposites)
 
         try {
-          await axios.post('http://localhost:5000/withdrawHistory', {
+          await axios.post(`${process.env.REACT_APP_API_BASE_URL}/withdrawHistory`, {
             name, email, phone:number, withdraw
           }).then(res=>{
             updateCorrentBalance(currentBalance)
@@ -55,7 +81,7 @@ const UserProfile = () => {
 
       const updateCorrentBalance = async (amount) =>{
         try {
-          await axios.put(`http://localhost:5000/users/${email}`, {deposite:amount})
+          await axios.put(`${process.env.REACT_APP_API_BASE_URL}/users/${email}`, {deposite:amount})
         .then(res=>{
           console.log('Amount updated successfully',amount);
         }) 
@@ -138,6 +164,55 @@ const UserProfile = () => {
             {
                   user ? <Link className='text-white w-2/5 m-auto  btn block ms-5 bg-red-600 flex justify-center items-center hover:bg-red-800' onClick={logout}>Sign Out</Link>: <Link className='text-white btn-primary btn btn-sm block ms-5 w-2/5  m-auto  flex justify-center items-center' to='/login'>Login</Link>
                 }
+
+            <div className='grid lg:grid-cols-2 gap-8 p-7 my-10 bg-lime-100'> 
+            <div className='overflow-y-auto max-h-96 bg-sky-100 rounded-xl p-2'>
+              <p className='text-center text-xl font-bold my-2'>Deposit History</p>
+      <table className='table'>
+        <thead>
+          <tr className=''>
+            <th>Name</th>
+            <th>deposite</th>
+            <th>date</th>
+            <th>status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filterDepositData?.map(number => (
+            <tr className="hover" key={number._id}>
+              <td>{number.name}</td>
+              <td>{number.deposite}</td>
+              <td>{number.date}</td>
+              <td>{number.request}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+      <div className='overflow-y-auto max-h-96 bg-sky-100  rounded-xl p-2'>
+      <p className='text-center text-xl font-bold my-2'>Withdraw History</p>
+      <table className='table'>
+        <thead>
+          <tr className=''>
+            <th>Name</th>
+            <th>deposite</th>
+            <th>date</th>
+            <th>status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filterWithdrawData?.map(number => (
+            <tr className="hover" key={number._id}>
+              <td>{number.name}</td>
+              <td>{number.withdraw}</td>
+              <td>{number.date}</td>
+              <td>{number.request}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+            </div>
         </div>
     );
 };

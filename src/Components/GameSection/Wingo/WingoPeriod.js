@@ -50,7 +50,7 @@ const WingoPeriod = () => {
   useEffect(() => {
     const interval = setInterval(() => {
 
-      axios.get(`http://localhost:5000/countdown/running`)
+      axios.get(`${process.env.REACT_APP_API_BASE_URL}/countdown/running`)
       .then(res=>{
         setTime(res.data.secondsLeft);
         setGameCount(res.data.countdownId)
@@ -68,6 +68,22 @@ const WingoPeriod = () => {
     };
     },[]);
 
+    const [deposites, setDeposites] = useState(0);
+
+  useEffect(() => {
+
+    const interval = setInterval(()=>{
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/users/${user?.email}`)
+    .then(res=>res.json())
+    .then(data=> setDeposites(data.deposite))
+    }, (2000));
+
+    return () => {
+      clearInterval(interval);
+    }
+
+  }, [deposites])
+
   const formatTime = time => {
     const minutes = Math.floor(time / 60).toString().padStart(2, '0');
     const seconds = (time % 60).toString().padStart(2, '0');
@@ -78,10 +94,14 @@ const WingoPeriod = () => {
   };
 
   const handleSubmit = async(color) => {
+    if(selectedValue>deposites){
+      alert('Insufficient balance');
+      return;
+    }
     
     if (selectedValue !== null) {
       try {
-        await axios.post(`http://localhost:5000/bet`,{
+        await axios.post(`${process.env.REACT_APP_API_BASE_URL}/bet`,{
         email: user?.email, color, betAmount: selectedValue
       }).then(res=>{
         alert(`Successfully ${selectedValue} submitted.`)

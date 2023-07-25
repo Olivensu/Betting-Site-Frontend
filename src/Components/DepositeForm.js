@@ -22,7 +22,7 @@ const DepositeForm = () => {
         e.preventDefault();
 
         try {
-            await axios.post("http://localhost:5000/depositHistory",{
+            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/depositHistory`,{
               name,email:user.email,phone,deposite,txnID
             })
             .then(res=>{
