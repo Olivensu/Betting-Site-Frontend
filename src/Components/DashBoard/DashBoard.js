@@ -29,7 +29,7 @@ const DashBoard = () => {
   for (const user of filterWithdraw) {
     totalwithdrawvalue += user.withdraw;
   }
-  console.log(totaldepositvalue);
+  let remainingBalance = totaldepositvalue - totalwithdrawvalue;
   
 
 
@@ -39,8 +39,9 @@ const DashBoard = () => {
             <div className=''>
             <p className='text-3xl font-bold text-center my-10 text-yellow-600'>Dashboard</p>
             <div className='bg-purple-500 w-96 m-auto p-3 rounded-xl'>
-            <p className='text-xl font-bold text-center my-3'>Total Deposited value {totaldepositvalue}</p>
-            <p className='text-xl font-bold text-center my-3'>Total Withdraw value {totalwithdrawvalue}</p>
+            <p className='text-xl font-bold text-center my-3'>Total Deposited Balance {totaldepositvalue}</p>
+            <p className='text-xl font-bold text-center my-3'>Total Withdraw Balance {totalwithdrawvalue}</p>
+            <p className='text-xl font-bold text-center my-3'>Total Remaining Balance {remainingBalance}</p>
             </div>
             </div>
             <div className='grid lg:grid-cols-3 m-10 justify-items-center gap-12'>
