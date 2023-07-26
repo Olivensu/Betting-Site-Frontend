@@ -102,7 +102,7 @@ const UserProfile = () => {
             <Link to='/depositeForm'><button  className='btn btn-warning hover:bg-yellow-600 text-white'>Recharge</button></Link>
           <Link to={isAdmin==='true'? '/dashboard' : ''}><button className='btn btn-secondary text-white'>Dashboard</button></Link>
           </div>
-            <div className='flex justify-center p-10'>
+            <div className='md:flex justify-center p-10'>
             <img className='w-52 rounded-2xl' src="https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="" />
 
             <div className='ml-12'>

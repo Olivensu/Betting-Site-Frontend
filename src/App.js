@@ -19,6 +19,8 @@ import SureWin from './Components/GameSection/SureWin/SureWin';
 import RechargeRequest from './Components/DashBoard/RechargeRequest';
 import WithDrawRequest from './Components/DashBoard/WithDrawRequest';
 import NotFound from './Components/NotFound';
+import Add from './Components/DashBoard/Add';
+import Userinfo from './Components/DashBoard/Userinfo';
 
 function App() {
   return (
@@ -35,9 +37,11 @@ function App() {
         <Route path='/dashboard' element={<AdminRoute><DashBoard></DashBoard></AdminRoute>}></Route>
         <Route path='/dashboard/rechargerequest' element={<AdminRoute><RechargeRequest></RechargeRequest></AdminRoute>}></Route>
         <Route path='/dashboard/withdrawrequest' element={<AdminRoute><WithDrawRequest></WithDrawRequest></AdminRoute>}></Route>
+        <Route path='/dashboard/user' element={<AdminRoute><Add></Add></AdminRoute>}></Route>
         <Route path='/depositeForm' element={<PrivateRoute><DepositeForm></DepositeForm></PrivateRoute>}></Route>
         <Route path='/surewin' element={<PrivateRoute><SureWin></SureWin></PrivateRoute>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
+        <Route path='/add' element={<Add></Add>}></Route>
       </Routes>
     </div>
   );

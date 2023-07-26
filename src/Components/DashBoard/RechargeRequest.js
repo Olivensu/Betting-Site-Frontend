@@ -108,6 +108,7 @@ const RechargeRequest = () => {
         <div className='p-5 py-10 bg-cyan-50'>
             <div className='flex justify-around pb-5'>
                 <Link to='/dashboard'><button className='btn btn-sm btn-primary'>Dashboard</button></Link>
+                <Link to='/dashboard/user'><button className='btn btn-sm btn-primary'>Users Info</button></Link>
                 <Link to='/dashboard/rechargerequest'><button className='btn btn-sm btn-primary'>Recharge Request</button></Link>
                 <Link to='/dashboard/withdrawrequest'><button className='btn btn-sm btn-primary'>Withdraw Request</button></Link>
             </div>
