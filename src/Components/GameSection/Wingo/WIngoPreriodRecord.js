@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 const WIngoPreriodRecord = () => {
     const [data, setData] = useState([]);
     const [gameCount, setGameCount] = useState(1);
-    console.log(gameCount)
+    // console.log(gameCount)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,7 +21,7 @@ const WIngoPreriodRecord = () => {
   const finishedData = data.filter(data => data.status === 'finished');
 
   const sortedData = finishedData.sort((a, b) =>parseInt(b.countdownId) - parseInt(a.countdownId)).slice(0,10);
-  console.log(sortedData)
+  // console.log(sortedData)
     return (
         <div className='bg-base-200 rounded-xl py-3'>
             <div className="flex justify-center">

@@ -77,15 +77,15 @@ if(loading ){
     }
     return (
         <div>
-                <div className='top-banner h-72 bg-[#0A1F3C]'>
+                {/* <div className='top-banner h-72 bg-[#0A1F3C]'>
                 <h1 className='text-5xl font-bold text-white text-center pt-24'>Sign In</h1>
                 <p className='text-accent pt-16 pl-16 text-xl font-bold'>HOME // Sign In</p>
-            </div>
+            </div> */}
                 <div>
             {/* <div className="p-3 bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500">
               <img className="ms-20 w-[350px]" src={nsuLogo} alt="" />
             </div> */}
-            <div className="bg-yellow-200 text-center md:w-2/3 lg:w-1/2 mx-auto py-16 my-16">
+            <div className="bg-yellow-200 text-center md:w-2/3 lg:w-1/2 mx-auto py-16 md:my-16">
               <h1 className="text-black text-center font-bold mb-5 text-3xl">
                 Login Our Website
               </h1>

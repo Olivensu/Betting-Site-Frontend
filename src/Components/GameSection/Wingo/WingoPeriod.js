@@ -54,8 +54,8 @@ const WingoPeriod = () => {
       .then(res=>{
         setTime(res.data.secondsLeft);
         setGameCount(res.data.countdownId)
-        console.log(res.data.secondsLeft);
-        console.log(res.data);
+        // console.log(res.data.secondsLeft);
+        // console.log(res.data);
       });
       // This function will execute every 1 second (1000 milliseconds)
       // You can put any logic here that you want to execute every 1 second
