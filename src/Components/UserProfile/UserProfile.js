@@ -97,32 +97,17 @@ const UserProfile = () => {
        
       
     return (
-        <div className='bg-base-200 m-auto py-16'>
-          <div className='flex justify-between mx-10'>
-            <Link to='/depositeForm'><button  className='btn btn-warning hover:bg-yellow-600 text-white'>Recharge</button></Link>
-          <Link to={isAdmin==='true'? '/dashboard' : ''}><button className='btn btn-secondary text-white'>Dashboard</button></Link>
-          </div>
-            <div className='md:flex justify-center p-10'>
-            <img className='w-52 rounded-2xl' src="https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="" />
-
-            <div className='ml-12'>
-              <p className='text-xl my-3'><b>Id:</b> {_id}</p>
-              <p className='text-xl my-3'><b>Name:</b> {name}</p>
-              <p className='text-xl my-3'><b>Email:</b> {email}</p>
-              <p className='text-xl my-3'><b>Phone:</b> {phone}</p>
-              <p className='text-xl my-3'><b>Current Balance:</b> {deposite}</p>
-            </div>
-            </div>
-            {
-               user ? <div>
-                {/* <Link className='text-white font-bold w-2/5 m-auto mb-5  btn block ms-5 bg-green-600 flex justify-center items-center hover:bg-green-800' onClick={logout}>WithDraw Balance</Link> */}
-               {/* You can open the modal using ID.showModal() method */}
-          <button className="text-white font-bold w-2/5 m-auto mb-5  btn block ms-5 bg-green-600 flex justify-center items-center hover:bg-green-800"
+        <div className='bg-base-200 m-auto pt-10'>
+          <div className=' mx-5'>
+            <div className='m-auto text-center'>
+            <Link to='/depositeForm'><button  className='ml-2 btn btn-warning hover:bg-yellow-600 text-white'>Recharge</button></Link>
+            {/* You can open the modal using ID.showModal() method */}
+          <button className="btn btn-success ml-2 md:ml-5 hover:bg-green-700 mt-5 text-white"
             onClick={() => window.my_modal_4.showModal()}>WithDraw Balance</button>
           <dialog id="my_modal_4" className="modal">
             <form className="modal-box w-11/12 max-w-5xl">
                 
-              <h3 className="font-bold text-center bg-pink-600 text-white py-3 rounded-xl  text-lg">Keep your money to Win with secured interest</h3>
+              <h3 className="font-bold text-center bg-pink-600 text-white py-3 rounded-xl  text-lg">Hurray!!! Withdraw your winning money...</h3>
               <div className='bg-sky-200 m-auto text-center py-8 mt-5 rounded-xl shadow-xl'>
                 
                 <label htmlFor="number">Nagad Number</label>
@@ -159,14 +144,32 @@ const UserProfile = () => {
     </form>
     
           </dialog>
+            </div>
+          {/* <Link to={isAdmin==='true'? '/dashboard' : ''}><button className='btn btn-secondary text-white'>Dashboard</button></Link> */}
+          </div>
+            <div className='p-5'>
+            <img className='m-auto w-20 rounded-2xl' src="https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="" />
+
+            <div className='text-center'>
+              <p className='text-xl my-3'><b>Id:</b> {_id}</p>
+              <p className='text-xl my-3'><b>Name:</b> {name}</p>
+              <p className='text-xl my-3'><b>Email:</b> {email}</p>
+              <p className='text-xl my-3'><b>Phone:</b> {phone}</p>
+              <p className='text-xl my-3'><b>Current Balance:</b> {deposite}</p>
+            </div>
+            </div>
+            {
+               user ? <div>
+                {/* <Link className='text-white font-bold w-2/5 m-auto mb-5  btn block ms-5 bg-green-600 flex justify-center items-center hover:bg-green-800' onClick={logout}>WithDraw Balance</Link> */}
+               
                </div>:<Link></Link>
             }
             {
                   user ? <Link className='text-white w-2/5 m-auto  btn block ms-5 bg-red-600 flex justify-center items-center hover:bg-red-800' onClick={logout}>Sign Out</Link>: <Link className='text-white btn-primary btn btn-sm block ms-5 w-2/5  m-auto  flex justify-center items-center' to='/login'>Login</Link>
                 }
 
-            <div className='grid lg:grid-cols-2 gap-8 p-7 my-10 bg-lime-100'> 
-            <div className='overflow-y-auto max-h-96 bg-sky-100 rounded-xl p-2'>
+            <div className=' p-7 my-10 bg-lime-100'> 
+            <div className='overflow-y-auto shadow-xl max-h-96 bg-sky-100 rounded-xl p-2'>
               <p className='text-center text-xl font-bold my-2'>Deposit History</p>
       <table className='table'>
         <thead>
@@ -189,7 +192,7 @@ const UserProfile = () => {
         </tbody>
       </table>
       </div>
-      <div className='overflow-y-auto max-h-96 bg-sky-100  rounded-xl p-2'>
+      <div className='overflow-y-auto mt-10 max-h-96 bg-sky-100  rounded-xl p-2'>
       <p className='text-center text-xl font-bold my-2'>Withdraw History</p>
       <table className='table'>
         <thead>

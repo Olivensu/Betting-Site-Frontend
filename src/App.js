@@ -24,7 +24,8 @@ import Userinfo from './Components/DashBoard/Userinfo';
 
 function App() {
   return (
-    <div>
+    <div className=' m-auto'>
+      <div className=' m-auto'>
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -32,17 +33,18 @@ function App() {
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/forgetPass' element={<ForgetPass></ForgetPass>}></Route>
         <Route path='/wingo' element={<PrivateRoute><Wingo></Wingo></PrivateRoute>}></Route>
-        <Route path='/user' element={<UserProfile></UserProfile>}></Route>
+        <Route path='/user' element={<PrivateRoute><UserProfile></UserProfile></PrivateRoute>}></Route>
         <Route path='/timer' element={<Countdown></Countdown>}></Route>
-        <Route path='/dashboard' element={<AdminRoute><DashBoard></DashBoard></AdminRoute>}></Route>
-        <Route path='/dashboard/rechargerequest' element={<AdminRoute><RechargeRequest></RechargeRequest></AdminRoute>}></Route>
-        <Route path='/dashboard/withdrawrequest' element={<AdminRoute><WithDrawRequest></WithDrawRequest></AdminRoute>}></Route>
-        <Route path='/dashboard/user' element={<AdminRoute><Add></Add></AdminRoute>}></Route>
         <Route path='/depositeForm' element={<PrivateRoute><DepositeForm></DepositeForm></PrivateRoute>}></Route>
         <Route path='/surewin' element={<PrivateRoute><SureWin></SureWin></PrivateRoute>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
         <Route path='/add' element={<Add></Add>}></Route>
+        <Route path='/dashboard' element={<AdminRoute><DashBoard></DashBoard></AdminRoute>}></Route>
+        <Route path='/dashboard/rechargerequest' element={<AdminRoute><RechargeRequest></RechargeRequest></AdminRoute>}></Route>
+        <Route path='/dashboard/withdrawrequest' element={<AdminRoute><WithDrawRequest></WithDrawRequest></AdminRoute>}></Route>
+        <Route path='/dashboard/user' element={<AdminRoute><Add></Add></AdminRoute>}></Route>
       </Routes>
+      </div>
     </div>
   );
 }

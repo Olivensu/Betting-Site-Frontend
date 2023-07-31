@@ -223,7 +223,7 @@ const SureWin = () => {
           <dialog id="my_modal_5" className="modal">
             <form className="modal-box w-11/12 max-w-5xl">
                 
-              <h3 className="font-bold text-center bg-pink-600 text-white py-3 rounded-xl  text-lg">Keep your money to Win with secured interest</h3>
+              <h3 className="font-bold text-center bg-pink-600 text-white py-3 rounded-xl  text-lg">Withdraw your money from the SureWin and Add to Main Balance!!!</h3>
               <div className='bg-sky-200 m-auto text-center py-8 mt-5 rounded-xl shadow-xl'>
                 
                 
