@@ -4,9 +4,9 @@ import icon from '../../img/large_gamedaystrategy.png'
 
 const Header = () => {
     return (
-        <div className='grid grid-cols-4 bg-[#F1C93B] p-2'>
+        <div className='grid grid-cols-4 bg-[#F1C93B]'>
             <Link className='m-auto' to='/'>
-            <img className='w-20' src={icon} alt="" />
+            <img className='w-32 h-20' src={icon} alt="" />
             </Link>
             <Link className='m-auto' to='/'>
             <button className='text-center text-xl'>

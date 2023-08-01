@@ -155,10 +155,11 @@ const WingoPeriod = () => {
               <p className="py-4">Contract Money</p>
               <div>
       <input type="button" value="100" onClick={() => handleButtonClick(100)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 100 ? 'green' : '' }} />
+      <input type="button" value="200" onClick={() => handleButtonClick(200)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 200 ? 'green' : '' }} />
       <input type="button" value="500" onClick={() => handleButtonClick(500)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 500 ? 'green' : '' }} />
       <input type="button" value="1000" onClick={() => handleButtonClick(1000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1000 ? 'green' : '' }}/>
-      <input type="button" value="10000" onClick={() => handleButtonClick(10000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 10000 ? 'green' : '' }}/>
-      <input type="button" value="50000" onClick={() => handleButtonClick(50000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 50000 ? 'green' : '' }}/>
+      <input type="button" value="1500" onClick={() => handleButtonClick(1500)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1500 ? 'green' : '' }}/>
+      <input type="button" value="2000" onClick={() => handleButtonClick(2000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 2000 ? 'green' : '' }}/>
       <br />
       <br />
       <p>Total contract money is {selectedValue}</p>
@@ -185,10 +186,11 @@ const WingoPeriod = () => {
               <p className="py-4">Contract Money</p>
               <div>
       <input type="button" value="100" onClick={() => handleButtonClick(100)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 100 ? 'red' : '' }} />
+      <input type="button" value="200" onClick={() => handleButtonClick(200)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 200 ? 'red' : '' }} />
       <input type="button" value="500" onClick={() => handleButtonClick(500)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 500 ? 'red' : '' }} />
       <input type="button" value="1000" onClick={() => handleButtonClick(1000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1000 ? 'red' : '' }}/>
-      <input type="button" value="10000" onClick={() => handleButtonClick(10000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 10000 ? 'red' : '' }}/>
-      <input type="button" value="50000" onClick={() => handleButtonClick(50000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 50000 ? 'red' : '' }}/>
+      <input type="button" value="1500" onClick={() => handleButtonClick(1500)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1500 ? 'red' : '' }}/>
+      <input type="button" value="2000" onClick={() => handleButtonClick(2000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 2000 ? 'red' : '' }}/>
       <br />
       <br />
       <p>Total contract money is {selectedValue}</p>
@@ -215,10 +217,11 @@ const WingoPeriod = () => {
               <p className="py-4">Contract Money</p>
               <div>
       <input type="button" value="100" onClick={() => handleButtonClick(100)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 100 ? '#6739B6' : '' }} />
+      <input type="button" value="200" onClick={() => handleButtonClick(200)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 200 ? '#6739B6' : '' }} />
       <input type="button" value="500" onClick={() => handleButtonClick(500)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 500 ? '#6739B6' : '' }} />
       <input type="button" value="1000" onClick={() => handleButtonClick(1000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1000 ? '#6739B6' : '' }}/>
-      <input type="button" value="10000" onClick={() => handleButtonClick(10000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 10000 ? '#6739B6' : '' }}/>
-      <input type="button" value="50000" onClick={() => handleButtonClick(50000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 50000 ? '#6739B6' : '' }}/>
+      <input type="button" value="1500" onClick={() => handleButtonClick(1500)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1500 ? '#6739B6' : '' }}/>
+      <input type="button" value="2000" onClick={() => handleButtonClick(2000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 2000 ? '#6739B6' : '' }}/>
       <br />
       <br />
       <p>Total contract money is {selectedValue}</p>

@@ -10,11 +10,11 @@ const Home = () => {
     const location = useLocation()
 
     return (
-        <div className=" min-h-screen w-full">
-            <div>
+        <div className=" min-h-screen bg-[#6C005E] w-full">
+            <div className='max-w-2xl m-auto'>
                 <FancySlider></FancySlider>
             </div>
-           <div className='grid grid-cols-1'>
+           <div className='m-auto max-w-2xl'>
            <div className=' bg-[#6C005E] text-center p-5'>
             <img className='w-11/12 m-auto' src={wingo} alt="" />
             <Link to='/wingo'><button className='btn btn-warning w-10/12'>Go Game</button></Link>

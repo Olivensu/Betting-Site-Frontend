@@ -21,6 +21,7 @@ import WithDrawRequest from './Components/DashBoard/WithDrawRequest';
 import NotFound from './Components/NotFound';
 import Add from './Components/DashBoard/Add';
 import Userinfo from './Components/DashBoard/Userinfo';
+import Footer from './Components/Shared/Footer';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='/dashboard/withdrawrequest' element={<AdminRoute><WithDrawRequest></WithDrawRequest></AdminRoute>}></Route>
         <Route path='/dashboard/user' element={<AdminRoute><Add></Add></AdminRoute>}></Route>
       </Routes>
+      <Footer></Footer>
       </div>
     </div>
   );
