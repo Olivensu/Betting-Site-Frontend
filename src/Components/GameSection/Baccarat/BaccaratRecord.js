@@ -1,14 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const WIngoPreriodRecord = () => {
+const BaccaratRecord = () => {
+
     const [data, setData] = useState([]);
     const [gameCount, setGameCount] = useState(1);
     // console.log(gameCount)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      axios.get(`${process.env.REACT_APP_API_BASE_URL}/countdown/`).then(res=>{
+      axios.get(`${process.env.REACT_APP_API_BASE_URL}/baccaratcountdown/`).then(res=>{
         setData(res.data);
       })
     }, 2000);
@@ -53,7 +54,7 @@ const WIngoPreriodRecord = () => {
             <tr className="hover" key={number._id}>
               <td>{number.countdownId}</td>
               <td>{number.status}</td>
-              <td>{number?.winningColor==='red'? <div className='w-6 h-6 rounded-full bg-red-600'></div>:number?.winningColor==='green'? <div className='w-6 h-6 rounded-full bg-green-600'></div>:<div className='w-6 h-6 rounded-full bg-blue-600'></div>}</td>
+              <td>{number?.winningColor==='player'? <div className='w-6 h-6 rounded-full bg-red-600'></div>:number?.winningColor==='tie'? <div className='w-6 h-6 rounded-full bg-green-600'></div>:<div className='w-6 h-6 rounded-full bg-blue-600'></div>}</td>
             </tr>
           ))}
         </tbody>
@@ -66,4 +67,4 @@ const WIngoPreriodRecord = () => {
     );
 };
 
-export default WIngoPreriodRecord;
+export default BaccaratRecord;

@@ -22,6 +22,7 @@ import NotFound from './Components/NotFound';
 import Add from './Components/DashBoard/Add';
 import Userinfo from './Components/DashBoard/Userinfo';
 import Footer from './Components/Shared/Footer';
+import Baccarat from './Components/GameSection/Baccarat/Baccarat';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/forgetPass' element={<ForgetPass></ForgetPass>}></Route>
         <Route path='/wingo' element={<PrivateRoute><Wingo></Wingo></PrivateRoute>}></Route>
+        <Route path='/baccarat' element={<PrivateRoute><Baccarat></Baccarat></PrivateRoute>}></Route>
         <Route path='/user' element={<PrivateRoute><UserProfile></UserProfile></PrivateRoute>}></Route>
         <Route path='/timer' element={<Countdown></Countdown>}></Route>
         <Route path='/depositeForm' element={<PrivateRoute><DepositeForm></DepositeForm></PrivateRoute>}></Route>

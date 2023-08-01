@@ -1,77 +1,77 @@
 import React, { useEffect, useState } from 'react';
-import './wingoPeriod.css'
-import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import axios from 'axios';
 
-const WingoPeriod = () => {
-  const [user, loading, error] = useAuthState(auth);
-  const [time, setTime] = useState(0);
-  const [gameCount, setGameCount] = useState('');
-  const [selectedValue, setSelectedValue] = useState(null);
+const BaccaratCountdown = () => {
+    const [user, loading, error] = useAuthState(auth);
+    const [time, setTime] = useState(0);
+    const [gameCount, setGameCount] = useState('');
+    const [selectedValue, setSelectedValue] = useState(null);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+    useEffect(()=>{
+        const interval = setInterval(() => {
 
-      axios.get(`${process.env.REACT_APP_API_BASE_URL}/countdown/running`)
-      .then(res=>{
-        setTime(res.data.secondsLeft);
-        setGameCount(res.data.countdownId)
-      });
-    }, (1000));
-
-    return () => {
-      clearInterval(interval);
-    };
-    },[]);
+            axios.get(`${process.env.REACT_APP_API_BASE_URL}/baccaratcountdown/running`)
+            .then(res=>{
+              setTime(res.data.secondsLeft);
+              setGameCount(res.data.countdownId)
+            });
+          }, (1000));
+      
+          return () => {
+            clearInterval(interval);
+          };
+    },[])
 
     const [deposites, setDeposites] = useState(0);
 
-  useEffect(() => {
+    useEffect(() => {
 
-    const interval = setInterval(()=>{
-      fetch(`${process.env.REACT_APP_API_BASE_URL}/users/${user?.email}`)
-    .then(res=>res.json())
-    .then(data=> setDeposites(data.deposite))
-    }, (2000));
-
-    return () => {
-      clearInterval(interval);
-    }
-
-  }, [deposites])
-
-  const formatTime = time => {
-    const minutes = Math.floor(time / 60).toString().padStart(2, '0');
-    const seconds = (time % 60).toString().padStart(2, '0');
-    return `${minutes}:${seconds}`;
-  };
-  const handleButtonClick = (value) => {
-    setSelectedValue(value);
-  };
-
-  const handleSubmit = async(color) => {
-    if(selectedValue>deposites){
-      alert('Insufficient balance');
-      return;
-    }
+        const interval = setInterval(()=>{
+          fetch(`${process.env.REACT_APP_API_BASE_URL}/users/${user?.email}`)
+        .then(res=>res.json())
+        .then(data=> setDeposites(data.deposite))
+        }, (2000));
     
-    if (selectedValue !== null) {
-      try {
-        await axios.post(`${process.env.REACT_APP_API_BASE_URL}/bet`,{
-        email: user?.email, color, betAmount: selectedValue
-      }).then(res=>{
-        alert(`Successfully ${selectedValue} submitted.`)
-      })
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      alert("Please select a value.");
-    }
-  };
+        return () => {
+          clearInterval(interval);
+        }
+    
+      }, [deposites])
+
+      const formatTime = time => {
+        const minutes = Math.floor(time / 60).toString().padStart(2, '0');
+        const seconds = (time % 60).toString().padStart(2, '0');
+        return `${minutes}:${seconds}`;
+      };
+      const handleButtonClick = (value) => {
+        setSelectedValue(value);
+      };
+    
+      const handleSubmit = async(color) => {
+        if(selectedValue>deposites){
+          alert('Insufficient balance');
+          return;
+        }
+        
+        if (selectedValue !== null) {
+          try {
+            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/baccaratbet`,{
+            email: user?.email, color, betAmount: selectedValue
+          }).then(res=>{
+            alert(`Successfully ${selectedValue} submitted.`)
+          })
+          } catch (error) {
+            console.log(error);
+          }
+        } else {
+          alert("Please select a value.");
+        }
+      };
+
     return (
-      <div className="bg-base-200 my-5 rounded-xl">
+        <div className="bg-base-200 my-5 rounded-xl">
         <div className="w-full rounded-xl border-b-4 border-yellow-600">
           <p className="text-xl font-bold text-center">Parity</p>
         </div>
@@ -103,12 +103,12 @@ const WingoPeriod = () => {
           {/* You can open the modal using ID.showModal() method */}
           {
             time>30 ? <button className="btn btn-success text-white"
-            onClick={() => window.my_modal_4.showModal()}>Join Green</button> : <button className="btn text-white " disabled
-            onClick={() => window.my_modal_4.showModal()}>Join Green</button>
+            onClick={() => window.my_modal_4.showModal()}>Join Player</button> : <button className="btn text-white " disabled
+            onClick={() => window.my_modal_4.showModal()}>Join Player</button>
           }
           <dialog id="my_modal_4" className="modal">
             <form method="dialog" className="modal-box w-11/12 max-w-5xl">
-              <h3 className="font-bold text-center bg-green-600 text-white py-3 rounded-xl  text-lg">Join Green</h3>
+              <h3 className="font-bold text-center bg-green-600 text-white py-3 rounded-xl  text-lg">Join Player</h3>
               <p className="py-4">Contract Money</p>
               <div>
       <input type="button" value="100" onClick={() => handleButtonClick(100)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 100 ? 'green' : '' }} />
@@ -124,7 +124,7 @@ const WingoPeriod = () => {
     <div>
               <div className="modal-action">
                 {/* if there is a button, it will close the modal */}
-                <button  className='btn w-1/2 btn-success text-white' onClick={()=>handleSubmit('green')} >Confirm</button>
+                <button  className='btn w-1/2 btn-success text-white' onClick={()=>handleSubmit('player')} >Confirm</button>
                 <button className="btn w-1/2 btn-accent">Close</button>
               </div>
     </div>
@@ -134,12 +134,12 @@ const WingoPeriod = () => {
           {/* You can open the modal using ID.showModal() method */}
           {
             time>30 ?<button className="btn btn-accent text-white"
-            onClick={() => window.my_modal_5.showModal()}>Join Red</button> : <button className="btn btn-accent text-white" disabled
-            onClick={() => window.my_modal_5.showModal()}>Join Red</button>
+            onClick={() => window.my_modal_5.showModal()}>Join TIE</button> : <button className="btn btn-accent text-white" disabled
+            onClick={() => window.my_modal_5.showModal()}>Join TIE</button>
           }
           <dialog id="my_modal_5" className="modal">
             <form method="dialog" className="modal-box w-11/12 max-w-5xl">
-              <h3 className="font-bold text-center bg-red-600 text-white py-3 rounded-xl  text-lg">Join Red</h3>
+              <h3 className="font-bold text-center bg-red-600 text-white py-3 rounded-xl  text-lg">Join TIE</h3>
               <p className="py-4">Contract Money</p>
               <div>
       <input type="button" value="100" onClick={() => handleButtonClick(100)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 100 ? 'red' : '' }} />
@@ -155,7 +155,7 @@ const WingoPeriod = () => {
     <div>
               <div className="modal-action">
                 {/* if there is a button, it will close the modal */}
-                <button  className='btn w-1/2 btn-success text-white' onClick={()=>handleSubmit('red')} >Confirm</button>
+                <button  className='btn w-1/2 btn-success text-white' onClick={()=>handleSubmit('tie')} >Confirm</button>
                 <button className="btn w-1/2 btn-accent">Close</button>
               </div>
     </div>
@@ -165,12 +165,12 @@ const WingoPeriod = () => {
           {/* You can open the modal using ID.showModal() method */}
           {
             time>30 ? <button className="btn btn-primary text-white"
-            onClick={() => window.my_modal_6.showModal()}>Join Blue</button> : <button className="btn btn-primary text-white" disabled
-            onClick={() => window.my_modal_6.showModal()}>Join Blue</button>
+            onClick={() => window.my_modal_6.showModal()}>Join Banker</button> : <button className="btn btn-primary text-white" disabled
+            onClick={() => window.my_modal_6.showModal()}>Join Banker</button>
           }
           <dialog id="my_modal_6" className="modal">
             <form method="dialog" className="modal-box w-11/12 max-w-5xl">
-              <h3 className="font-bold text-center bg-blue-600 text-white py-3 rounded-xl  text-lg">Join Blue</h3>
+              <h3 className="font-bold text-center bg-blue-600 text-white py-3 rounded-xl  text-lg">Join Banker</h3>
               <p className="py-4">Contract Money</p>
               <div>
       <input type="button" value="100" onClick={() => handleButtonClick(100)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 100 ? '#6739B6' : '' }} />
@@ -186,27 +186,15 @@ const WingoPeriod = () => {
     <div>
               <div className="modal-action">
                 {/* if there is a button, it will close the modal */}
-                <button  className='btn w-1/2 btn-success text-white' onClick={()=>handleSubmit('blue')} >Confirm</button>
+                <button  className='btn w-1/2 btn-success text-white' onClick={()=>handleSubmit('banker')} >Confirm</button>
                 <button className="btn w-1/2 btn-accent">Close</button>
               </div>
     </div>
             </form>
           </dialog>
         </div>
-        {/* <div className='grid grid-cols-5 gap-3 m-3 pb-4'>
-            <button className='btn bg-gradient-to-r from-violet-500 to-red-500 w-full text-white text-2xl'>0</button>
-            <button className='btn btn-success w-full text-white text-2xl'>1</button>
-            <button className='btn btn-accent w-full text-white text-2xl'>2</button>
-            <button className='btn btn-success w-full text-white text-2xl'>3</button>
-            <button className='btn btn-accent w-full text-white text-2xl'>4</button>
-            <button className='btn bg-gradient-to-r from-violet-500 to-green-500 w-full text-white text-2xl'>5</button>
-            <button className='btn btn-success w-full text-white text-2xl'>6</button>
-            <button className='btn btn-accent w-full text-white text-2xl'>7</button>
-            <button className='btn btn-success w-full text-white text-2xl'>8</button>
-            <button className='btn btn-accent w-full text-white text-2xl'>9</button>
-        </div> */}
       </div>
     );
 };
 
-export default WingoPeriod;
+export default BaccaratCountdown;

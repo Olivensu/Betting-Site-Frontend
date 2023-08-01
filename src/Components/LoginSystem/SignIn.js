@@ -1,13 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
 const SignIn = () => {
 
-    const history = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -18,10 +17,17 @@ const SignIn = () => {
       error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    if(user){
-      history('/')
-    }
-    console.log(user);
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location.state?.from?.pathname);
+
+    const from =location.state?.from?.pathname ||  "/"; 
+    useEffect(()=>{
+      if(user){
+        // console.log(user);
+        navigate(from, {replace: true})
+      }
+    },[from, navigate,user])
     
 let signInError;
 if(error){
@@ -37,45 +43,45 @@ const handleShowPassword = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         signInWithEmailAndPassword(email, password)
-        try {
-          await axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`,{
-                email,password
-            })
-            .then(res=>{
-                if(res.data === "exist"){
-                    // console.log("Login successful")
-                }
-                else{
-                    // alert("User email or password is wrong")
-                    // console.log("Login invalid")
-                }
-            })
-          // const res= await fetch("${process.env.REACT_APP_API_BASE_URL}/login", {
-          //   method: "POST",
-          //   headers: {
-          //     "Content-Type": "application/json", // Specify that you're sending JSON data
-          //   },
-          //   body: JSON.stringify({email,password}), // Convert the data object to a JSON string
-          // });
+        // try {
+        //   await axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`,{
+        //         email,password
+        //     })
+        //     .then(res=>{
+        //         if(res.data === "exist"){
+        //             // console.log("Login successful")
+        //         }
+        //         else{
+        //             // alert("User email or password is wrong")
+        //             // console.log("Login invalid")
+        //         }
+        //     })
+        //   // const res= await fetch("${process.env.REACT_APP_API_BASE_URL}/login", {
+        //   //   method: "POST",
+        //   //   headers: {
+        //   //     "Content-Type": "application/json", // Specify that you're sending JSON data
+        //   //   },
+        //   //   body: JSON.stringify({email,password}), // Convert the data object to a JSON string
+        //   // });
 
-          // const data = res.json()
-          // console.log(data);
+        //   // const data = res.json()
+        //   // console.log(data);
 
-          // if(data){
-          //           history("/")
-          //           console.log("Login successful")
-          //       }
+        //   // if(data){
+        //   //           history("/")
+        //   //           console.log("Login successful")
+        //   //       }
                 
-          //       else{
-          //           alert("User email or password is wrong")
-          //           console.log("Login invalid")
-          //       }
+        //   //       else{
+        //   //           alert("User email or password is wrong")
+        //   //           console.log("Login invalid")
+        //   //       }
             
-        }
-        catch(e){
-            // alert("Wrong Details")
-            console.log(e)
-        }
+        // }
+        // catch(e){
+        //     // alert("Wrong Details")
+        //     console.log(e)
+        // }
         
     }
     return (
