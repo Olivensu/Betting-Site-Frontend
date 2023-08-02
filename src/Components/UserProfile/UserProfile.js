@@ -103,7 +103,7 @@ const UserProfile = () => {
             <Link to='/depositeForm'><button  className='ml-2 btn btn-warning hover:bg-yellow-600 text-white'>Recharge</button></Link>
             {/* You can open the modal using ID.showModal() method */}
           <button className="btn btn-success ml-2 md:ml-5 hover:bg-green-700 mt-5 text-white"
-            onClick={() => window.my_modal_4.showModal()}>WithDraw Balance</button>
+            onClick={() => window.my_modal_4.showModal()}>WithDraw</button>
           <dialog id="my_modal_4" className="modal">
             <form className="modal-box w-11/12 max-w-5xl">
                 

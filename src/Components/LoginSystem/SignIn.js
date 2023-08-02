@@ -135,8 +135,11 @@ const handleShowPassword = () => {
                   className="m-5 btn-accent cursor-pointer text-white text-bold text-xl block mx-auto input w-full max-w-xs"
                 />
                 <p className='mb-3'>Forget Password? - <Link className='text-red-600 font-semibold' to='/forgetPass'>Click here.</Link></p>
+                
+                
                 <Link className=' text-xl font-bold underline' to='/register'>Register Page</Link>
               </form></div>
+
             
           </div>
             </div>

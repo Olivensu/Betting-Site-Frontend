@@ -23,6 +23,9 @@ import Add from './Components/DashBoard/Add';
 import Userinfo from './Components/DashBoard/Userinfo';
 import Footer from './Components/Shared/Footer';
 import Baccarat from './Components/GameSection/Baccarat/Baccarat';
+import PrivacyAndPolicy from './Components/Policy/PrivacyAndPolicy';
+import AboutUs from './Components/Policy/AboutUs';
+import PosterUploadForm from './Components/PosterUploadForm';
 
 function App() {
   return (
@@ -33,6 +36,8 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<SignIn></SignIn>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/terms' element={<PrivacyAndPolicy></PrivacyAndPolicy>}></Route>
+        <Route path='/about' element={<AboutUs></AboutUs>}></Route>
         <Route path='/forgetPass' element={<ForgetPass></ForgetPass>}></Route>
         <Route path='/wingo' element={<PrivateRoute><Wingo></Wingo></PrivateRoute>}></Route>
         <Route path='/baccarat' element={<PrivateRoute><Baccarat></Baccarat></PrivateRoute>}></Route>
@@ -46,6 +51,7 @@ function App() {
         <Route path='/dashboard/rechargerequest' element={<AdminRoute><RechargeRequest></RechargeRequest></AdminRoute>}></Route>
         <Route path='/dashboard/withdrawrequest' element={<AdminRoute><WithDrawRequest></WithDrawRequest></AdminRoute>}></Route>
         <Route path='/dashboard/user' element={<AdminRoute><Add></Add></AdminRoute>}></Route>
+        <Route path='/imageupload' element={<AdminRoute><PosterUploadForm></PosterUploadForm></AdminRoute>}></Route>
       </Routes>
       <Footer></Footer>
       </div>

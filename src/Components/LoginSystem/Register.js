@@ -153,6 +153,8 @@ const Register = () => {
                   value="Submit"
                   className="m-5 btn-accent cursor-pointer text-white text-bold text-xl block mx-auto input w-full max-w-xs"
                 />
+                <p className='mb-3'>Continue to log in if you agree to - <Link to='/terms' className='text-blue-600'>Terms & Conditions</Link>
+          </p>
 
                 <Link className=' text-xl font-bold underline' to='/login'>Login Page</Link>
               </form>
