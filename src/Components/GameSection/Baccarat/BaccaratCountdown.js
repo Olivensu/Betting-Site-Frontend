@@ -10,13 +10,17 @@ const BaccaratCountdown = () => {
     const [selectedValue, setSelectedValue] = useState(null);
 
     useEffect(()=>{
-        const interval = setInterval(() => {
+        const interval = setInterval(async () => {
 
-            axios.get(`${process.env.REACT_APP_API_BASE_URL}/baccaratcountdown/running`)
+            try {
+                await axios.get(`${process.env.REACT_APP_API_BASE_URL}/baccaratcountdown/running`)
             .then(res=>{
               setTime(res.data.secondsLeft);
               setGameCount(res.data.countdownId)
             });
+            } catch (error) {
+                console.error('Error:', error.message);
+            }
           }, (1000));
       
           return () => {
@@ -73,7 +77,7 @@ const BaccaratCountdown = () => {
     return (
         <div className="bg-base-200 my-5 rounded-xl">
         <div className="w-full rounded-xl border-b-4 border-yellow-600">
-          <p className="text-xl font-bold text-center">Parity</p>
+          <p className="text-2xl font-bold text-center">BACCARAT</p>
         </div>
         <div className="p-4 flex justify-between">
           <div>

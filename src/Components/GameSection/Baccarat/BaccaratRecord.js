@@ -46,7 +46,7 @@ const BaccaratRecord = () => {
           <tr className=''>
             <th>ID</th>
             <th>status</th>
-            <th>Color</th>
+            <th>Baccarat</th>
           </tr>
         </thead>
         <tbody>
@@ -54,7 +54,7 @@ const BaccaratRecord = () => {
             <tr className="hover" key={number._id}>
               <td>{number.countdownId}</td>
               <td>{number.status}</td>
-              <td>{number?.winningColor==='player'? <div className='w-6 h-6 rounded-full bg-red-600'></div>:number?.winningColor==='tie'? <div className='w-6 h-6 rounded-full bg-green-600'></div>:<div className='w-6 h-6 rounded-full bg-blue-600'></div>}</td>
+              <td>{number?.winningColor==='player'? <div>Player</div>:number?.winningColor==='tie'? <div>TIE</div>:<div>Banker</div>}</td>
             </tr>
           ))}
         </tbody>
