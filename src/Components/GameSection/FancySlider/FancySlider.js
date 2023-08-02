@@ -7,8 +7,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import img1  from '../../../img/slide-img-1.jpg'
-import img2  from '../../../img/slide-img-2.png'
+import img1  from '../../../img/Blue Minimalist Shopping Sale YouTube Thumbnail.png'
+import img2  from '../../../img/GIVEAWAY (Facebook Cover) (1).png'
+import img3  from '../../../img/GIVEAWAY (Facebook Cover).png'
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -28,12 +29,13 @@ const FancySlider = () => {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
+        // navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper w-full rounded-3xl shadow-2xl"
       >
         <SwiperSlide><img className='w-full' src={img1} alt="Slide 1" /></SwiperSlide>
         <SwiperSlide><img  className='w-full' src={img2} alt="Slide 2" /></SwiperSlide>
+        <SwiperSlide><img  className='w-full' src={img3} alt="Slide 2" /></SwiperSlide>
       </Swiper>
     </div>
     );
