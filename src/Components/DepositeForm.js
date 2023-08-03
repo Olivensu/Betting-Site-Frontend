@@ -13,7 +13,7 @@ const DepositeForm = () => {
     const [phone, setPhone] = useState('');
     const [txnID, setTxnID] = useState('');
     const [deposite, setDeposite] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
+    // const [imageUrl, setImageUrl] = useState('');
 
   // useEffect(() => {
   //   async function fetchImageUrl() {
