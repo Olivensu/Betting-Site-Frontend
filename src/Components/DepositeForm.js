@@ -15,18 +15,18 @@ const DepositeForm = () => {
     const [deposite, setDeposite] = useState('');
     const [imageUrl, setImageUrl] = useState('');
 
-  useEffect(() => {
-    async function fetchImageUrl() {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/getPosterUrl`); // Replace with your backend route
-        setImageUrl(response.data.url);
-      } catch (error) {
-        console.error('Error fetching image URL:', error);
-      }
-    }
+  // useEffect(() => {
+  //   async function fetchImageUrl() {
+  //     try {
+  //       const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/getPosterUrl`); // Replace with your backend route
+  //       setImageUrl(response.data.url);
+  //     } catch (error) {
+  //       console.error('Error fetching image URL:', error);
+  //     }
+  //   }
 
-    fetchImageUrl();
-  }, []);
+  //   fetchImageUrl();
+  // }, []);
   
     if(loading){
       return <Loading></Loading>
@@ -54,7 +54,7 @@ const DepositeForm = () => {
     }
     return (
         <div>
-          {imageUrl && <img src={imageUrl} alt="Uploaded Poster" />}
+          {/* {imageUrl && <img src={imageUrl} alt="Uploaded Poster" />} */}
                 {/* <div className='top-banner h-72 py-20 bg-[#0A1F3C]'>
                 <h1 className='text-5xl bg-lime-400 font-bold text-white text-center bg-opacity-50'>Recharge</h1>
                 <p className='text-white mt-16 pl-16 text-xl font-bold bg-red-400 bg-opacity-50'>HOME // Recharge</p>
