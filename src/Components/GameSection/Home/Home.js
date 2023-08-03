@@ -25,7 +25,7 @@ const Home = () => {
            </div>
            <div className=' bg-[#6C005E] text-center p-5'>
             <img className='w-11/12 m-auto rounded-2xl' src={sureWin} alt="" />
-            <Link to='/surewin'><button className='btn btn-primary mt-8 w-10/12'>Go Win!!!</button></Link>
+            <Link to='/surewin'><button className='btn btn-primary mt-8 w-10/12'>5% Bonus Campaign!!!</button></Link>
            </div>
            </div>
         </div>

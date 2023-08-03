@@ -13,6 +13,8 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState('');
     const [confirmpassword, setConfirmpassword] = useState('');
+    const queryParams = new URLSearchParams(window.location.search);
+    const referralCode = queryParams.get('ref');
     const [
       createUserWithEmailAndPassword,
       user,
@@ -50,7 +52,7 @@ const Register = () => {
 
         try {
             await axios.post(`${process.env.REACT_APP_API_BASE_URL}/register`,{
-              name,email,phone,password,confirmpassword
+              name,email,phone,password,confirmpassword, referralCode: referralCode
             })
             .then(res=>{
                 if(res.data === "exist"){
@@ -77,6 +79,7 @@ const Register = () => {
     const handleShowPassword = () => {
       setShowPassword(!showPassword);
     };
+    
     return (
         <div>
                 {/* <div className='top-banner h-72 bg-[#0A1F3C]'>
@@ -145,6 +148,10 @@ const Register = () => {
                   onChange={(e)=>{setConfirmpassword(e.target.value)}}
                   className="m-5 block mx-auto input w-full max-w-xs"
                 />
+                <p className=''>Referral Code:</p>
+  <input type="text" value={referralCode || ''} readOnly className="input input-bordered w-full max-w-xs" />
+                {/* <label>Referral Code:</label>
+        <input type="text" value={referralCode || ''} readOnly /> */}
 
                 {signInError || errorPass}
                   

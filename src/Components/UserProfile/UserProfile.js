@@ -11,6 +11,7 @@ const UserProfile = () => {
     const [userinfo, setUserinfo] = useState([]);
     const [withdraw, setWithdraw] = useState(0);
     const [number, setNumber] = useState(0);
+    const [copySuccess, setCopySuccess] = useState(false);
     const logout = () => {
         signOut(auth);
       };
@@ -46,7 +47,11 @@ const UserProfile = () => {
       if(loading){
         return <Loading></Loading>
       }
+      const code = user?.email;
+const parts = code.split('@');
+const maincode = parts[0];
 
+      const registrationUrl = `http://localhost:3000/register?ref=${encodeURIComponent(maincode)}`;
       const filterWithdrawData = withdrawData.filter(data => user?.email===data.email)
       const filterDepositData = depositeData.filter(data => user?.email===data.email)
 
@@ -78,6 +83,16 @@ const UserProfile = () => {
             console.log(err)
         }
       }
+
+      const copyToClipboard = () => {
+        const textField = document.createElement('textarea');
+        textField.innerText = registrationUrl;
+        document.body.appendChild(textField);
+        textField.select();
+        document.execCommand('copy');
+        textField.remove();
+        setCopySuccess(true);
+      };
 
       const updateCorrentBalance = async (amount) =>{
         try {
@@ -122,7 +137,7 @@ const UserProfile = () => {
                 <input
                   type="number"
                   name='deposite'
-                  placeholder="Type your deposit amount"
+                  placeholder="Type your withdraw amount"
                   onChange={(e)=>{setWithdraw(e.target.value)}} 
                   className="m-5 block mx-auto input w-full max-w-xs"
                 />
@@ -157,6 +172,8 @@ const UserProfile = () => {
               <p className='text-xl my-3'><b>Phone:</b> {phone}</p>
               <p className='text-xl my-3'><b>Current Balance:</b> {deposite}</p>
             </div>
+
+            
             </div>
             {
                user ? <div>
@@ -167,6 +184,15 @@ const UserProfile = () => {
             {
                   user ? <Link className='text-white w-2/5 m-auto  btn block ms-5 bg-red-600 flex justify-center items-center hover:bg-red-800' onClick={logout}>Sign Out</Link>: <Link className='text-white btn-primary btn btn-sm block ms-5 w-2/5  m-auto  flex justify-center items-center' to='/login'>Login</Link>
                 }
+                <div className='h-2 bg-gray-300 w-2/3 m-auto rounded-full mt-5'></div>
+
+<div className='m-auto text-center'>
+  <p className='my-5 text-xl font-bold'>Share your reference link and and get 50tk for every user!!!</p>
+            <input className='text-center m-auto input border-sky-500 ' type="text" value={registrationUrl} readOnly />
+        <button className='m-auto text-center btn bg-orange-500 ml-5' onClick={copyToClipboard}>
+          {copySuccess ? 'Copied!' : 'Copy'}
+        </button>
+            </div>
 
             <div className=' p-7 my-10 bg-lime-100'> 
             <div className='overflow-y-auto shadow-xl max-h-96 bg-sky-100 rounded-xl p-2'>

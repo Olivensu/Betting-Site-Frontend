@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import axios from 'axios';
+import img1 from '../../../img/100.png'
+import img2 from '../../../img/200.png'
+import img3 from '../../../img/500.png'
+import img4 from '../../../img/1k.png'
+import img5 from '../../../img/1.5k.png'
+import img6 from '../../../img/2k.png'
 
 const BaccaratCountdown = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -107,20 +113,20 @@ const BaccaratCountdown = () => {
           {/* You can open the modal using ID.showModal() method */}
           {
             time>30 ? <button className="btn btn-success text-white"
-            onClick={() => window.my_modal_4.showModal()}>Join Player</button> : <button className="btn text-white " disabled
-            onClick={() => window.my_modal_4.showModal()}>Join Player</button>
+            onClick={() => window.my_modal_4.showModal()}>Player</button> : <button className="btn text-white " disabled
+            onClick={() => window.my_modal_4.showModal()}>Player</button>
           }
           <dialog id="my_modal_4" className="modal">
             <form method="dialog" className="modal-box w-11/12 max-w-5xl">
               <h3 className="font-bold text-center bg-green-600 text-white py-3 rounded-xl  text-lg">Join Player</h3>
               <p className="py-4">Contract Money</p>
               <div>
-      <input type="button" value="100" onClick={() => handleButtonClick(100)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 100 ? 'green' : '' }} />
-      <input type="button" value="200" onClick={() => handleButtonClick(200)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 200 ? 'green' : '' }} />
-      <input type="button" value="500" onClick={() => handleButtonClick(500)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 500 ? 'green' : '' }} />
-      <input type="button" value="1000" onClick={() => handleButtonClick(1000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1000 ? 'green' : '' }}/>
-      <input type="button" value="1500" onClick={() => handleButtonClick(1500)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1500 ? 'green' : '' }}/>
-      <input type="button" value="2000" onClick={() => handleButtonClick(2000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 2000 ? 'green' : '' }}/>
+              <img className='w-20 m-3 inline' onClick={() => handleButtonClick(100)}  src={img1} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(200)}  src={img2} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(500)}  src={img3} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(1000)} src={img4} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(1500)} src={img5} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(2000)} src={img6} alt="" />
       <br />
       <br />
       <p>Total contract money is {selectedValue}</p>
@@ -138,20 +144,20 @@ const BaccaratCountdown = () => {
           {/* You can open the modal using ID.showModal() method */}
           {
             time>30 ?<button className="btn btn-accent text-white"
-            onClick={() => window.my_modal_5.showModal()}>Join TIE</button> : <button className="btn btn-accent text-white" disabled
-            onClick={() => window.my_modal_5.showModal()}>Join TIE</button>
+            onClick={() => window.my_modal_5.showModal()}>TIE</button> : <button className="btn btn-accent text-white" disabled
+            onClick={() => window.my_modal_5.showModal()}>TIE</button>
           }
           <dialog id="my_modal_5" className="modal">
             <form method="dialog" className="modal-box w-11/12 max-w-5xl">
               <h3 className="font-bold text-center bg-red-600 text-white py-3 rounded-xl  text-lg">Join TIE</h3>
               <p className="py-4">Contract Money</p>
               <div>
-      <input type="button" value="100" onClick={() => handleButtonClick(100)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 100 ? 'red' : '' }} />
-      <input type="button" value="200" onClick={() => handleButtonClick(200)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 200 ? 'red' : '' }} />
-      <input type="button" value="500" onClick={() => handleButtonClick(500)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 500 ? 'red' : '' }} />
-      <input type="button" value="1000" onClick={() => handleButtonClick(1000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1000 ? 'red' : '' }}/>
-      <input type="button" value="1500" onClick={() => handleButtonClick(1500)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1500 ? 'red' : '' }}/>
-      <input type="button" value="2000" onClick={() => handleButtonClick(2000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 2000 ? 'red' : '' }}/>
+              <img className='w-20 m-3 inline' onClick={() => handleButtonClick(100)}  src={img1} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(200)}  src={img2} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(500)}  src={img3} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(1000)} src={img4} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(1500)} src={img5} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(2000)} src={img6} alt="" />
       <br />
       <br />
       <p>Total contract money is {selectedValue}</p>
@@ -169,20 +175,20 @@ const BaccaratCountdown = () => {
           {/* You can open the modal using ID.showModal() method */}
           {
             time>30 ? <button className="btn btn-primary text-white"
-            onClick={() => window.my_modal_6.showModal()}>Join Banker</button> : <button className="btn btn-primary text-white" disabled
-            onClick={() => window.my_modal_6.showModal()}>Join Banker</button>
+            onClick={() => window.my_modal_6.showModal()}>Banker</button> : <button className="btn btn-primary text-white" disabled
+            onClick={() => window.my_modal_6.showModal()}>Banker</button>
           }
           <dialog id="my_modal_6" className="modal">
             <form method="dialog" className="modal-box w-11/12 max-w-5xl">
               <h3 className="font-bold text-center bg-blue-600 text-white py-3 rounded-xl  text-lg">Join Banker</h3>
               <p className="py-4">Contract Money</p>
               <div>
-      <input type="button" value="100" onClick={() => handleButtonClick(100)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 100 ? '#6739B6' : '' }} />
-      <input type="button" value="200" onClick={() => handleButtonClick(200)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 200 ? '#6739B6' : '' }} />
-      <input type="button" value="500" onClick={() => handleButtonClick(500)} className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 500 ? '#6739B6' : '' }} />
-      <input type="button" value="1000" onClick={() => handleButtonClick(1000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1000 ? '#6739B6' : '' }}/>
-      <input type="button" value="1500" onClick={() => handleButtonClick(1500)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 1500 ? '#6739B6' : '' }}/>
-      <input type="button" value="2000" onClick={() => handleButtonClick(2000)}  className='btn btn-primary my-3 text-white mr-5' style={{ backgroundColor: selectedValue === 2000 ? '#6739B6' : '' }}/>
+              <img className='w-20 m-3 inline' onClick={() => handleButtonClick(100)}  src={img1} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(200)}  src={img2} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(500)}  src={img3} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(1000)} src={img4} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(1500)} src={img5} alt="" />
+      <img className='w-20 m-3 inline' onClick={() => handleButtonClick(2000)} src={img6} alt="" />
       <br />
       <br />
       <p>Total contract money is {selectedValue}</p>

@@ -66,7 +66,7 @@ const SureWin = () => {
         }
 
         const updateDeposit = parseInt(surewindeposite) + parseInt(deposites)
-        const updatewinmoney = parseInt(surewinwinmoney) + parseInt(deposites)
+        const updatewinmoney = parseInt(surewinwinmoney) + parseInt(deposites*0.95)
 
         try {
             if(!sureWinData){
@@ -143,7 +143,7 @@ const SureWin = () => {
         <div className='m-auto text-center bg-lime-100 py-10'>
 
         <div className="flex justify-around ">
-        <Link to='/depositeForm'><button  className='btn btn-warning hover:bg-yellow-600 text-white'>Recharge</button></Link>
+        <Link to='/depositeForm'><button  className='btn btn-warning hover:bg-yellow-600 text-white'>Deposit</button></Link>
 
           {/* Rules Modal */}
           {/* Open the modal using ID.showModal() method */}
@@ -178,7 +178,7 @@ const SureWin = () => {
             <div className='w-96 m-auto bg-purple-600 py-6 rounded-2xl my-12 shadow-2xl'>
             <p className='text-xl text-center py-3 my-6 m-auto rounded-2xl shadow-xl bg-purple-300 w-10/12'>Current Balance: {deposite}</p>
             {/* <p className='text-xl text-center py-3 my-6 m-auto rounded-2xl shadow-xl bg-purple-300 w-10/12'>SureWin Deposited Balance: {surewindeposite}</p> */}
-            <p className='text-xl text-center py-3 my-6 m-auto rounded-2xl shadow-xl bg-purple-300 w-10/12'>SureWin Deposited Balance With Interest: {surewinwinmoney}</p>
+            <p className='text-xl text-center py-3 my-6 m-auto rounded-2xl shadow-xl bg-purple-300 w-10/12'>SureWin Deposited Balance With 5% Interest: {surewinwinmoney}</p>
             </div>
 
             {/* You can open the modal using ID.showModal() method */}
