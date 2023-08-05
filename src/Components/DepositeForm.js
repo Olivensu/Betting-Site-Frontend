@@ -14,6 +14,7 @@ const DepositeForm = () => {
     const [txnID, setTxnID] = useState('');
     const [deposite, setDeposite] = useState('');
     // const [imageUrl, setImageUrl] = useState('');
+    const [image, setImage] = useState('')
 
   // useEffect(() => {
   //   async function fetchImageUrl() {
@@ -27,6 +28,14 @@ const DepositeForm = () => {
 
   //   fetchImageUrl();
   // }, []);
+  useEffect(()=>{
+    axios.get(`${process.env.REACT_APP_API_BASE_URL}/getPosterImage`)
+    .then(res=>{
+        console.log(res.data.url)
+        setImage(res.data.url)
+    })
+    .catch(err => console.log(err));
+},[image])
   
     if(loading){
       return <Loading></Loading>
@@ -54,7 +63,6 @@ const DepositeForm = () => {
     }
     return (
         <div>
-          {/* {imageUrl && <img src={imageUrl} alt="Uploaded Poster" />} */}
                 {/* <div className='top-banner h-72 py-20 bg-[#0A1F3C]'>
                 <h1 className='text-5xl bg-lime-400 font-bold text-white text-center bg-opacity-50'>Recharge</h1>
                 <p className='text-white mt-16 pl-16 text-xl font-bold bg-red-400 bg-opacity-50'>HOME // Recharge</p>
@@ -63,7 +71,8 @@ const DepositeForm = () => {
             {/* <div className="p-3 bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500">
               <img className="ms-20 w-[350px]" src={nsuLogo} alt="" />
             </div> */}
-            <div className="bg-yellow-200 text-center lg:w-1/2 mx-auto py-16 lg:my-10">
+            <div className="bg-yellow-200 text-center lg:w-1/2 mx-auto py-16 lg:my-5">
+            {image && <img className='m-auto my-5' src={image} alt="Uploaded Poster" />}
               <h1 className="text-black text-center font-bold mb-5 text-3xl">
               Deposit in Your Account
               </h1>

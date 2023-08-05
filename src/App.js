@@ -51,7 +51,7 @@ function App() {
         <Route path='/dashboard/rechargerequest' element={<AdminRoute><RechargeRequest></RechargeRequest></AdminRoute>}></Route>
         <Route path='/dashboard/withdrawrequest' element={<AdminRoute><WithDrawRequest></WithDrawRequest></AdminRoute>}></Route>
         <Route path='/dashboard/user' element={<AdminRoute><Add></Add></AdminRoute>}></Route>
-        {/* <Route path='/imageupload' element={<AdminRoute><PosterUploadForm></PosterUploadForm></AdminRoute>}></Route> */}
+        <Route path='/imageupload' element={<AdminRoute><PosterUploadForm></PosterUploadForm></AdminRoute>}></Route>
       </Routes>
       <Footer></Footer>
       </div>

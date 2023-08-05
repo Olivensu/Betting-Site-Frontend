@@ -44,10 +44,11 @@ const DashBoard = () => {
             <p className='text-xl font-bold text-center my-3'>Total Remaining Balance {remainingBalance}</p>
             </div>
             </div>
-            <div className='grid lg:grid-cols-3 m-10 justify-items-center gap-12'>
+            <div className='grid lg:grid-cols-2 m-10 justify-items-center gap-12'>
               <Link to='/dashboard/user'><p className='bg-sky-300 w-80 text-2xl font-bold text-gray-600 text-center py-10 rounded-2xl cursor-pointer'>Users info</p></Link>
               <Link to='/dashboard/rechargerequest'><p className='bg-sky-300 w-80 text-2xl font-bold text-gray-600 text-center py-10 rounded-2xl cursor-pointer'>Recharge Request</p></Link>
               <Link to='/dashboard/withdrawrequest'><p className='bg-lime-300 w-80 text-2xl font-bold text-gray-600 text-center py-10 rounded-2xl cursor-pointer'>Withdraw Request</p></Link>
+              <Link to='/imageupload'><p className='bg-lime-300 w-80 text-2xl font-bold text-gray-600 text-center py-10 rounded-2xl cursor-pointer'>Deposit Instruction</p></Link>
             </div>
       </div>
     );
