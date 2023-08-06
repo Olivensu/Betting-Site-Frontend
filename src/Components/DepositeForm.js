@@ -19,7 +19,7 @@ const DepositeForm = () => {
   useEffect(() => {
     async function fetchImageUrl() {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/getPosterUrl`); // Replace with your backend route
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/getPosterImage`); // Replace with your backend route
         setImageUrl(response.data.url);
         console.log(response.data.url);
       } catch (error) {
