@@ -26,8 +26,21 @@ import Baccarat from './Components/GameSection/Baccarat/Baccarat';
 import PrivacyAndPolicy from './Components/Policy/PrivacyAndPolicy';
 import AboutUs from './Components/Policy/AboutUs';
 import PosterUploadForm from './Components/PosterUploadForm';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
+  const [photos, setPhotos] = useState([])
+  useEffect(()=>{
+    axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/get`)
+    .then((res)=>{
+      console.log(res.data);
+      setPhotos(res.data)
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }, [])
   return (
     <div className=' m-auto'>
       <div className=' m-auto'>
@@ -43,7 +56,7 @@ function App() {
         <Route path='/baccarat' element={<PrivateRoute><Baccarat></Baccarat></PrivateRoute>}></Route>
         <Route path='/user' element={<PrivateRoute><UserProfile></UserProfile></PrivateRoute>}></Route>
         <Route path='/timer' element={<Countdown></Countdown>}></Route>
-        <Route path='/depositeForm' element={<PrivateRoute><DepositeForm></DepositeForm></PrivateRoute>}></Route>
+        <Route path='/depositeForm' element={<PrivateRoute><DepositeForm  photos={photos}></DepositeForm></PrivateRoute>}></Route>
         <Route path='/surewin' element={<PrivateRoute><SureWin></SureWin></PrivateRoute>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
         <Route path='/add' element={<Add></Add>}></Route>
@@ -51,7 +64,7 @@ function App() {
         <Route path='/dashboard/rechargerequest' element={<AdminRoute><RechargeRequest></RechargeRequest></AdminRoute>}></Route>
         <Route path='/dashboard/withdrawrequest' element={<AdminRoute><WithDrawRequest></WithDrawRequest></AdminRoute>}></Route>
         <Route path='/dashboard/user' element={<AdminRoute><Add></Add></AdminRoute>}></Route>
-        <Route path='/imageupload' element={<AdminRoute><PosterUploadForm></PosterUploadForm></AdminRoute>}></Route>
+        <Route path='/imageupload' element={<PosterUploadForm  photos={photos}></PosterUploadForm>}></Route>
       </Routes>
       <Footer></Footer>
       </div>
