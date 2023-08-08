@@ -29,6 +29,19 @@ const DepositeForm = () => {
 
     fetchImageUrl();
   }, [imageUrl]);
+
+  const [getInfo, setGetInfo] = useState('')
+//   console.log(photos,'olive');
+
+useEffect(()=>{
+    axios.get(`${process.env.REACT_APP_API_BASE_URL}/getinfo`)
+    .then(res=>{
+        console.log(res.data.info)
+        setGetInfo(res.data.info)
+    }).catch(err=>{
+        console.log(err);
+    })
+},[])
 //   useEffect(()=>{
 //     axios.get(`${process.env.REACT_APP_API_BASE_URL}/getPosterImage`)
 //     .then(res=>{
@@ -64,7 +77,8 @@ const DepositeForm = () => {
     }
     return (
         <div>
-          {imageUrl ? <img src={`${imageUrl}`} alt="Latest Uploaded" /> : <p>No image found</p>}
+          
+          {/* {imageUrl ? <img src={`${imageUrl}`} alt="Latest Uploaded" /> : <p>No image found</p>} */}
                 {/* <div className='top-banner h-72 py-20 bg-[#0A1F3C]'>
                 <h1 className='text-5xl bg-lime-400 font-bold text-white text-center bg-opacity-50'>Recharge</h1>
                 <p className='text-white mt-16 pl-16 text-xl font-bold bg-red-400 bg-opacity-50'>HOME // Recharge</p>
@@ -75,6 +89,7 @@ const DepositeForm = () => {
             </div> */}
             <div className="bg-yellow-200 text-center lg:w-1/2 mx-auto py-16 lg:my-5">
             {/* {image && <img className='m-auto my-5' src={image} alt="Uploaded Poster" />} */}
+            <p className='text-xl mb-10 '>{getInfo}</p>
               <h1 className="text-black text-center font-bold mb-5 text-3xl">
               Deposit in Your Account
               </h1>
