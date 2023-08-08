@@ -115,7 +115,7 @@ const maincode = parts[0];
         <div className='bg-base-200 m-auto pt-10'>
           <div className=' mx-5'>
             <div className='m-auto text-center'>
-            <Link to='/depositeForm'><button  className='ml-2 btn btn-warning hover:bg-yellow-600 text-white'>Recharge</button></Link>
+            <Link to='/depositeForm'><button  className='ml-2 btn btn-warning hover:bg-yellow-600 text-white'>Deposit</button></Link>
             {/* You can open the modal using ID.showModal() method */}
           <button className="btn btn-success ml-2 md:ml-5 hover:bg-green-700 mt-5 text-white"
             onClick={() => window.my_modal_4.showModal()}>WithDraw</button>
