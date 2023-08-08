@@ -1,6 +1,6 @@
 
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './Components/GameSection/Home/Home';
 import Wingo from './Components/GameSection/Wingo/Wingo';
 import SignIn from './Components/LoginSystem/SignIn';
@@ -41,8 +41,19 @@ function App() {
       console.log(err);
     })
   }, [])
+
+  function ScrollToTop() {
+    const { pathname } = useLocation();
+  
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  
+    return null;
+  }
   return (
     <div className=' m-auto'>
+      <ScrollToTop />
       <div className=' m-auto'>
       <Header></Header>
       <Routes>
