@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import icon from '../../img/large_gamedaystrategy.png'
+import icon from '../../img/logo.png'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from './Loading';
@@ -14,7 +14,7 @@ const Header = () => {
     return (
         <div className='grid grid-cols-4 bg-[#F1C93B]'>
             <Link className='m-auto' to='/'>
-            <img className='w-32 h-20' src={icon} alt="" />
+            <img className='w-32  h-16 p-2 rounded-xl' src={icon} alt="" />
             </Link>
             <Link className='m-auto' to='/'>
             <button className='text-center text-xl'>

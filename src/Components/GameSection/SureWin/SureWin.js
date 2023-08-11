@@ -29,7 +29,7 @@ const SureWin = () => {
         setSurewinwinmoney(res.data.winmoney);
       });
 
-      }, [])
+      }, [deposites,surewinwinmoney])
 
       useEffect(() => {
         const interval = setInterval(() => {
@@ -80,8 +80,9 @@ const SureWin = () => {
             }else if(sureWinData.email === email){
                 await axios.put(`${process.env.REACT_APP_API_BASE_URL}/surewin/${email}`, {winmoney:updatewinmoney })
                 .then(res=>{
-                    alert("New Deposit added successfully")
+                    // alert("New Deposit added successfully")
                     console.log("New Deposit added successfully")
+                    return <Loading></Loading>
                 })
 
             }
@@ -90,6 +91,8 @@ const SureWin = () => {
       .then(res=>{
         // console.log(res);
         console.log('Amount updated successfully',currentBalance);
+        setDeposites(currentBalance);
+        setSurewinwinmoney(updatewinmoney)
       }) 
       .catch((error) => {
         console.error('Error updating status:', error);
@@ -99,6 +102,7 @@ const SureWin = () => {
             alert("Wrong Details")
             console.log(err)
         }
+        window.my_modal_4.close();
       }
 
 
@@ -112,6 +116,7 @@ const SureWin = () => {
         }
 
         const updatewinmoney = parseInt(surewinwinmoney) - parseInt(deposites);
+        window.my_modal_5.close();
 
         try {
           if(!sureWinData){
@@ -119,8 +124,9 @@ const SureWin = () => {
           }else if(sureWinData.email === email){
               await axios.put(`${process.env.REACT_APP_API_BASE_URL}/surewin/${email}`, { winmoney:updatewinmoney })
               .then(res=>{
-                  alert("New Deposit added successfully")
+                  // alert("New Deposit added successfully")
                   console.log("New Deposit added successfully")
+                  return <Loading></Loading>
               })
 
           }
@@ -129,6 +135,8 @@ const SureWin = () => {
     .then(res=>{
       // console.log(res);
       console.log('Amount updated successfully',currentBalance);
+      setDeposites(currentBalance);
+      setSurewinwinmoney(updatewinmoney)
     }) 
     .catch((error) => {
       console.error('Error updating status:', error);
@@ -138,6 +146,14 @@ const SureWin = () => {
           alert("Wrong Details")
           console.log(err)
       }
+      window.my_modal_5.close();
+      }
+
+      const handleDepositClose= ()=>{
+        window.my_modal_4.close();
+      }
+      const handleWithDrawClose= ()=>{
+        window.my_modal_5.close();
       }
     return (
         <div className='m-auto text-center bg-lime-100 py-10'>
@@ -185,9 +201,11 @@ const SureWin = () => {
           <button className="btn btn-success text-white"
             onClick={() => window.my_modal_4.showModal()}>Deposit</button>
           <dialog id="my_modal_4" className="modal">
-            <form className="modal-box w-11/12 max-w-5xl">
+          <div className='modal-box w-11/12 max-w-5xl'>
+          <button  onClick={handleDepositClose} className="btn float-right w-12 rounded-full btn-accent">X</button>
+            <form onSubmit={handleSubmit} className="">
                 
-              <h3 className="font-bold text-center bg-pink-600 text-white py-3 rounded-xl  text-lg">Keep your money to Win with secured interest</h3>
+              <h3 className="font-bold text-center bg-lime-500 text-white py-3 rounded-xl  text-lg">Keep your money to Win with secured interest</h3>
               <div className='bg-sky-200 m-auto text-center py-8 mt-5 rounded-xl shadow-xl'>
                 
                 
@@ -201,7 +219,7 @@ const SureWin = () => {
                 {/* <input
                   type="submit"
                   value="Submit"
-                  className="btn w-full max-w-xs btn-success text-white"
+                  className="btn w-1/2 btn-success text-white"
                 /> */}
               </div>
               <div>
@@ -210,10 +228,15 @@ const SureWin = () => {
     
               <div className="modal-action">
                 {/* if there is a button, it will close the modal */}
-                <button onClick={handleSubmit} className="btn w-1/2 btn-success text-white">Submit</button>
-                <button className="btn w-1/2 btn-accent">Close</button>
+                <input
+                  type="submit"
+                  value="Submit"
+                  className="btn w-full btn-success text-white"
+                />
+                
               </div>
     </form>
+          </div>
     
           </dialog>
 
@@ -221,34 +244,41 @@ const SureWin = () => {
           <button className="btn btn-accent ml-5 text-white"
             onClick={() => window.my_modal_5.showModal()}>Withdraw</button>
           <dialog id="my_modal_5" className="modal">
-            <form className="modal-box w-11/12 max-w-5xl">
+            <div className='modal-box w-11/12 max-w-5xl'>
+            <button  onClick={handleWithDrawClose} className="btn float-right w-12 rounded-full btn-accent">X</button>
+            <form  onSubmit={handleWithDraw} className="">
                 
-              <h3 className="font-bold text-center bg-pink-600 text-white py-3 rounded-xl  text-lg">Withdraw your money from the SureWin and Add to Main Balance!!!</h3>
-              <div className='bg-sky-200 m-auto text-center py-8 mt-5 rounded-xl shadow-xl'>
-                
-                
-                <input
-                  type="number"
-                  name='deposite'
-                  placeholder="Type your withdraw amount"
-                  onChange={(e)=>{setDeposites(e.target.value)}} 
-                  className="m-5 block mx-auto input w-full max-w-xs"
-                />{/* <input
-                  type="submit"
-                  value="Submit"
-                  className="btn w-full max-w-xs btn-success text-white"
-                /> */}
-              </div>
-              <div>
-      <br />
-    </div>
-    
-              <div className="modal-action">
-                {/* if there is a button, it will close the modal */}
-                <button onClick={handleWithDraw} className="btn w-1/2 btn-success text-white">Submit</button>
-                <button className="btn w-1/2 btn-accent">Close</button>
-              </div>
-    </form>
+                <h3 className="font-bold text-center bg-lime-500 text-white py-3 rounded-xl  text-lg">Withdraw your money from the SureWin and Add to Main Balance!!!</h3>
+                <div className='bg-sky-200 m-auto text-center py-8 mt-5 rounded-xl shadow-xl'>
+                  
+                  
+                  <input
+                    type="number"
+                    name='deposite'
+                    placeholder="Type your withdraw amount"
+                    onChange={(e)=>{setDeposites(e.target.value)}} 
+                    className="m-5 block mx-auto input w-full max-w-xs"
+                  />{/* <input
+                    type="submit"
+                    value="Submit"
+                    className="btn w-1/2 btn-success text-white"
+                  /> */}
+                </div>
+                <div>
+        <br />
+      </div>
+      
+                <div className="modal-action">
+                  {/* if there is a button, it will close the modal */}
+                  <input
+                    type="submit"
+                    value="Submit"
+                    className="btn w-full btn-success text-white"
+                  />
+                  
+                </div>
+      </form>
+            </div>
     
           </dialog>
         </div>

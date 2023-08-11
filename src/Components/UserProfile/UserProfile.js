@@ -51,7 +51,7 @@ const UserProfile = () => {
 const parts = code.split('@');
 const maincode = parts[0];
 
-      const registrationUrl = `http://localhost:3000/register?ref=${encodeURIComponent(maincode)}`;
+      const registrationUrl = `https://betting-site-frontend.vercel.app/register?ref=${encodeURIComponent(maincode)}`;
       const filterWithdrawData = withdrawData.filter(data => user?.email===data.email)
       const filterDepositData = depositeData.filter(data => user?.email===data.email)
 
@@ -69,7 +69,7 @@ const maincode = parts[0];
 
         // const updateDeposit = parseInt(surewindeposite) + parseInt(deposites)
         // const updatewinmoney = parseInt(surewinwinmoney) + parseInt(deposites)
-
+        window.my_modal_4.close();
         try {
           await axios.post(`${process.env.REACT_APP_API_BASE_URL}/withdrawHistory`, {
             name, email, phone:number, withdraw
@@ -109,7 +109,9 @@ const maincode = parts[0];
         }
       }
       
-       
+      const handleWithDrawClose= ()=>{
+        window.my_modal_4.close();
+      }
       
     return (
         <div className='bg-base-200 m-auto pt-10'>
@@ -120,9 +122,12 @@ const maincode = parts[0];
           <button className="btn btn-success ml-2 md:ml-5 hover:bg-green-700 mt-5 text-white"
             onClick={() => window.my_modal_4.showModal()}>WithDraw</button>
           <dialog id="my_modal_4" className="modal">
-            <form className="modal-box w-11/12 max-w-5xl">
+          <div className='modal-box w-11/12 max-w-5xl'>
+          <button  onClick={handleWithDrawClose} className="btn float-right w-12 rounded-full btn-accent">X</button>
+          <h3 className="font-bold text-center bg-lime-600 text-white py-3 rounded-xl  text-lg">Hurray!!! Withdraw your winning money...</h3>
+            <form onSubmit={handleSubmit} className="">
                 
-              <h3 className="font-bold text-center bg-pink-600 text-white py-3 rounded-xl  text-lg">Hurray!!! Withdraw your winning money...</h3>
+              
               <div className='bg-sky-200 m-auto text-center py-8 mt-5 rounded-xl shadow-xl'>
                 
                 <label htmlFor="number">Nagad Number</label>
@@ -153,10 +158,14 @@ const maincode = parts[0];
     
               <div className="modal-action">
                 {/* if there is a button, it will close the modal */}
-                <button onClick={handleSubmit} className="btn w-1/2 btn-success text-white">Submit</button>
-                <button className="btn w-1/2 btn-accent">Close</button>
+                <input
+                  type="submit"
+                  value="Submit"
+                  className="btn w-full btn-success text-white"
+                />
               </div>
     </form>
+          </div>
     
           </dialog>
             </div>
