@@ -51,7 +51,7 @@ const UserProfile = () => {
 const parts = code.split('@');
 const maincode = parts[0];
 
-      const registrationUrl = `https://betting-site-frontend.vercel.app/register?ref=${encodeURIComponent(maincode)}`;
+      const registrationUrl = `https://x-trading.vercel.app/register?ref=${encodeURIComponent(maincode)}`;
       const filterWithdrawData = withdrawData.filter(data => user?.email===data.email)
       const filterDepositData = depositeData.filter(data => user?.email===data.email)
 
