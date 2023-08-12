@@ -96,7 +96,7 @@ const Register = () => {
             </div> */}
             <div className="bg-yellow-200 text-center md:w-2/3 lg:w-1/2 mx-auto py-16 md:my-16">
               <h1 className="text-black text-center font-bold mb-5 text-2xl md:text-3xl">
-              Registration Our Website
+              Sign Up
               </h1>
     
               <form onSubmit={handleSubmit}>
@@ -149,7 +149,7 @@ const Register = () => {
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
                   name='confirmpassword'
-                  placeholder="Type your confirmpassword" required
+                  placeholder="Confirm Your Password" required
                   onChange={(e)=>{setConfirmpassword(e.target.value)}}
                   className="m-5 mx-auto input w-full max-w-xs"
                 />

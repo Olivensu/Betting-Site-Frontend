@@ -20,7 +20,7 @@ const Footer = () => {
   </div>  */}
   <hr  className='w-full my-5'/>
   <div className=''>
-    <p>Copyright © 2023 - All right reserved by Betting Site.</p>
+    <p>Copyright © 2023 - All rights reserved by X Trading.</p>
   </div>
             </div>
         </footer>

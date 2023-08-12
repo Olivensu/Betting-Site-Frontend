@@ -48,12 +48,10 @@ const BaccaratHeading = () => {
               <p className="py-4">
               3 minutes 1 issue, 2 minutes and 30 seconds to order, 30 seconds to show the lottery result. It opens all day. The total number of trade is 480 issues
               </p>
-              <p className="py-4">If you spend 100 to trade, after deducting 2 service fees, your contract amount is 98:
+              <p className="py-4">1. JOIN Player: if the result is green you will get (100*1.5) 150
               </p>
-              <p className="py-4">1. JOIN Player: if the result is green you will get (98*1.5) 147
-              </p>
-              <p className="py-4">2. JOIN TIE: if the result is red you will get (98*3) 294</p>
-              <p className="py-4">3. JOIN Banker: if the result is VIOLET you will get (98*2) 196</p>
+              <p className="py-4">2. JOIN TIE: if the result is red you will get (100*3) 300</p>
+              <p className="py-4">3. JOIN Banker: if the result is VIOLET you will get (100*2) 200</p>
               <div className="modal-action">
                 {/* if there is a button in form, it will close the modal */}
                 <button className="btn btn-accent">Close</button>

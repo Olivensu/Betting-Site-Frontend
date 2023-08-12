@@ -96,7 +96,7 @@ const handleShowPassword = () => {
             </div> */}
             <div className="bg-yellow-200 text-center md:w-2/3 lg:w-1/2 mx-auto py-16 md:my-16">
               <h1 className="text-black text-center font-bold mb-5 text-3xl">
-                Login Our Website
+                Login 
               </h1>
     
               <form method='POST' onSubmit={handleSubmit}>
@@ -137,9 +137,8 @@ const handleShowPassword = () => {
                 <p className='mb-3'>Forget Password? - <Link className='text-red-600 font-semibold' to='/forgetPass'>Click here.</Link></p>
                 
                 
-                <Link className=' text-xl font-bold underline' to='/register'>Register Page</Link>
+                <p className='text-lg'>New User? <Link className=' text-xl font-bold underline' to='/register'> Register Page</Link></p>
               </form></div>
-
             
           </div>
             </div>

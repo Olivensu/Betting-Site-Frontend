@@ -48,12 +48,10 @@ const WingoHeading = () => {
               <p className="py-4">
               3 minutes 1 issue, 2 minutes and 30 seconds to order, 30 seconds to show the lottery result. It opens all day. The total number of trade is 480 issues
               </p>
-              <p className="py-4">If you spend 100 to trade, after deducting 2 service fees, your contract amount is 98:
+              <p className="py-4">1. JOIN GREEN: if the result is green you will get double of your bet amount.
               </p>
-              <p className="py-4">1. JOIN GREEN: if the result is green you will get (98*2) 196
-              </p>
-              <p className="py-4">2. JOIN RED: if the result is red you will get (98*2) 196</p>
-              <p className="py-4">3. JOIN VIOLET: if the result is VIOLET you will get (98*2) 196</p>
+              <p className="py-4">2. JOIN RED: if the result is red you will get double of your bet amount.</p>
+              <p className="py-4">3. JOIN VIOLET: if the result is VIOLET you will get double of your bet amount.</p>
               <div className="modal-action">
                 {/* if there is a button in form, it will close the modal */}
                 <button className="btn btn-accent">Close</button>
