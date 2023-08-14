@@ -44,14 +44,14 @@ const BaccaratHeading = () => {
           </button>
           <dialog id="my_modal_1" className="modal">
             <form method="dialog" className="modal-box">
-              <h3 className="font-bold text-lg">Rule Of Guess</h3>
+              <h3 className="font-bold text-lg">Rule Of Baccarat</h3>
               <p className="py-4">
               3 minutes 1 issue, 2 minutes and 30 seconds to order, 30 seconds to show the lottery result. It opens all day. The total number of trade is 480 issues
               </p>
-              <p className="py-4">1. JOIN Player: if the result is green you will get (100*1.5) 150
+              <p className="py-4">1. JOIN Player: if the result is Player you will get (100*1.5) 150
               </p>
-              <p className="py-4">2. JOIN TIE: if the result is red you will get (100*3) 300</p>
-              <p className="py-4">3. JOIN Banker: if the result is VIOLET you will get (100*2) 200</p>
+              <p className="py-4">2. JOIN TIE: if the result is TIE you will get (100*3) 300</p>
+              <p className="py-4">3. JOIN Banker: if the result is Banker you will get (100*2) 200</p>
               <div className="modal-action">
                 {/* if there is a button in form, it will close the modal */}
                 <button className="btn btn-accent">Close</button>

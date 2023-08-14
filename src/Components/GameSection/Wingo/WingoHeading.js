@@ -44,14 +44,14 @@ const WingoHeading = () => {
           </button>
           <dialog id="my_modal_1" className="modal">
             <form method="dialog" className="modal-box">
-              <h3 className="font-bold text-lg">Rule Of Guess</h3>
+              <h3 className="font-bold text-lg">Rule Of Win-Go</h3>
               <p className="py-4">
               3 minutes 1 issue, 2 minutes and 30 seconds to order, 30 seconds to show the lottery result. It opens all day. The total number of trade is 480 issues
               </p>
               <p className="py-4">1. JOIN GREEN: if the result is green you will get double of your bet amount.
               </p>
               <p className="py-4">2. JOIN RED: if the result is red you will get double of your bet amount.</p>
-              <p className="py-4">3. JOIN VIOLET: if the result is VIOLET you will get double of your bet amount.</p>
+              <p className="py-4">3. JOIN Blue: if the result is Blue you will get double of your bet amount.</p>
               <div className="modal-action">
                 {/* if there is a button in form, it will close the modal */}
                 <button className="btn btn-accent">Close</button>
