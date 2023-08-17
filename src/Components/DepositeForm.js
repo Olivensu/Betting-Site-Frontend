@@ -57,6 +57,10 @@ useEffect(()=>{
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
+        if(deposite<500){
+          alert('Deposit amount should be more than 500.')
+          return
+        }
 
         try {
             await axios.post(`${process.env.REACT_APP_API_BASE_URL}/depositHistory`,{
@@ -91,8 +95,9 @@ useEffect(()=>{
             {/* {image && <img className='m-auto my-5' src={image} alt="Uploaded Poster" />} */}
             <p className='text-xl mb-10 '>{getInfo}</p>
               <h1 className="text-black text-center font-bold mb-5 text-3xl">
-              Deposit in Your Account
+              Deposit
               </h1>
+              <p className='text-red-600 font-bold'>Deposit amount should be more than 500.</p>
     
               <form onSubmit={handleSubmit}>
                 

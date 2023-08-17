@@ -56,6 +56,7 @@ const SureWin = () => {
         return <Loading></Loading>
       }
       const {name, email,phone,deposite} = userinfo;
+      const {time} = sureWinData;
 
       const handleSubmit = async (e) =>{
         const currentBalance = deposite - deposites;
@@ -65,8 +66,13 @@ const SureWin = () => {
           return;
         }
 
+        if(deposites<500){
+          alert('Deposit should be more than 500.');
+          return;
+        }
+
         const updateDeposit = parseInt(surewindeposite) + parseInt(deposites)
-        const updatewinmoney = parseInt(surewinwinmoney) + parseInt(deposites*0.95)
+        const updatewinmoney = parseInt(surewinwinmoney) + parseInt(deposites)
 
         try {
             if(!sureWinData){
@@ -87,7 +93,7 @@ const SureWin = () => {
 
             }
 
-            await axios.put(`${process.env.REACT_APP_API_BASE_URL}/users/${email}`, {deposite:currentBalance})
+            await axios.put(`${process.env.REACT_APP_API_BASE_URL}/users/${email}`, {deposite:currentBalance, time: new Date()})
       .then(res=>{
         // console.log(res);
         console.log('Amount updated successfully',currentBalance);
@@ -105,8 +111,30 @@ const SureWin = () => {
         window.my_modal_4.close();
       }
 
-
+  
       const handleWithDraw = async (e) =>{
+        
+      const currentDate = new Date(time);
+      const todayDate = new Date()
+      const futureDate = new Date(time);
+      futureDate.setDate(currentDate.getDate() + 10);
+      const withdrawDate = (todayDate-currentDate)/864000000;
+      console.log(withdrawDate)
+      console.log(futureDate)
+      if(withdrawDate<1){
+        alert('You can withdraw after: ' + futureDate.toDateString());
+        return
+      }
+        if(deposites<500){
+          alert('Withdraw should be more than 500.');
+          return;
+        }
+
+        if(deposites%500!==0){
+          alert("You can only withdraw multiple of 500 ex:(500, 1000, 1500 2000, 2500, 3000, 3500) up to 10000")
+          return;
+        }
+
         const currentBalance = parseInt(deposite) + parseInt(deposites);
 
         e.preventDefault();
@@ -122,7 +150,7 @@ const SureWin = () => {
           if(!sureWinData){
               alert('There is no deposit in this acount.')
           }else if(sureWinData.email === email){
-              await axios.put(`${process.env.REACT_APP_API_BASE_URL}/surewin/${email}`, { winmoney:updatewinmoney })
+              await axios.put(`${process.env.REACT_APP_API_BASE_URL}/surewin/${email}`, { winmoney:updatewinmoney, time: new Date() })
               .then(res=>{
                   // alert("New Deposit added successfully")
                   console.log("New Deposit added successfully")
@@ -177,6 +205,8 @@ const SureWin = () => {
               You can deposit your money here for fixed.
               </p>
               <p className="py-4">After 24h the money will increase 5%.
+              </p>
+              <p className="py-4">After putting your money, You can withdraw your money after 10days.
               </p>
               <p className="py-4">How many money you put here, everyday it increase 5% interest.
               </p>

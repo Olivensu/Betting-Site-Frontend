@@ -60,16 +60,22 @@ const maincode = parts[0];
       const handleSubmit = async (e) =>{
         
         e.preventDefault();
-        if (deposite < withdraw || withdraw < 1000) {
-          alert('Withdraw less than your current amount or less than 1000.');
+        window.my_modal_4.close();
+        if (deposite < withdraw || withdraw < 500) {
+          alert('Withdraw less than your current amount or less than 500.');
           return;
         } 
+
+        if(withdraw%500!==0){
+          alert("You can only withdraw multiple of 500 ex:(500, 1000, 1500 2000, 2500, 3000, 3500) up to 10000")
+          return;
+        }
 
         const currentBalance = deposite - withdraw;
 
         // const updateDeposit = parseInt(surewindeposite) + parseInt(deposites)
         // const updatewinmoney = parseInt(surewinwinmoney) + parseInt(deposites)
-        window.my_modal_4.close();
+        
         try {
           await axios.post(`${process.env.REACT_APP_API_BASE_URL}/withdrawHistory`, {
             name, email, phone:number, withdraw

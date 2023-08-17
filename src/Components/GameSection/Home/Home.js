@@ -4,10 +4,15 @@ import sureWin from '../../../img/sure win-min.png'
 import baccarat from '../../../img/baccarat-updated.jpeg'
 import { Link, useLocation } from 'react-router-dom';
 import FancySlider from '../FancySlider/FancySlider';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 const Home = () => {
 
     const location = useLocation()
+    useEffect(()=>{
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}`)
+    },[])
 
     return (
         <div className=" min-h-screen bg-[#6C005E] w-full">
